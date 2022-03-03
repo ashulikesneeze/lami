@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.green.lami.dao.MemberDAO">
+	<select id="selectMember" resultType="kr.green.lami.vo.MemberVO">
+		select * from member where me_id = #{me_id}
+	</select>
+	<insert id="insertMember">
+		insert into 
+			member(me_id, me_pw, me_name, me_gender, 
+				me_birth, me_address, me_phone, me_email, me_sub_address, me_postcode)
+			values(#{user.me_id},#{user.me_pw},#{user.me_name},#{user.me_gender},
+				#{user.me_birth},#{user.me_address},#{user.me_phone}
+				,#{user.me_email},#{user.me_sub_address},#{user.me_postcode})
+	</insert>
+	
+  <update id="updateMember">
+  		update member set
+  				me_pw      = #{user.me_pw},
+  				me_name    = #{user.me_name},
+  				me_birth   = #{user.me_birth},
+  				me_address = #{user.me_address},
+  				me_gender  = #{user.me_gender},
+  				me_phone   = #{user.me_phone},
+  				me_authority = #{user.me_authority}
+		where me_id = #{user.me_id} 
+  </update>
+  
+  <select id="selectByEmail" resultType="String">
+  		select me_id from member
+  				where me_email = #{user.me_email} and me_name = #{user.me_name}
+  				limit 1 
+  </select>
+  
+  <select id="selectMemberList" resultType="kr.green.lami.vo.MemberVO">
+  		select * from member where me_authority != 'super' 
+  </select>
+  
+  <update id="updateSession">
+  		update member set
+  			me_session_id = #{user.me_session_id},
+  			me_session_limit = #{user.me_session_limit}
+		where me_id = #{user.me_id} 
+  </update>
+  
+   <select id="selectMemberBySessionId" resultType="kr.green.lami.vo.MemberVO">
+  		select * from member where me_session_id = 
+  		#{me_session_id} and me_session_limit >= now()
+  </select>
+  
+  <select id="selectMainCategory" resultType="kr.green.lami.vo.MainCategoryVO">
+  	select * from main_category
+  </select>
+   <select id="selectMiddleCategory" resultType="kr.green.lami.vo.MiddleCategoryVO">
+  	select * from middle_category where mid_ma_cat_id = #{mid_ma_cat_id}
+  </select>
+   <select id="selectSmallCategory" resultType="kr.green.lami.vo.SmallCategoryVO">
+  	select * from small_category where sm_mid_cat_id = #{sm_mid_cat_id}
+  </select>
+   <select id="selectSmall2Category" resultType="kr.green.lami.vo.Small2CategoryVO">
+  	select * from small2_category where sm2_sm_cat_id = #{sm2_sm_cat_id}
+  </select>
+   <select id="selectSmall3Category" resultType="kr.green.lami.vo.Small3CategoryVO">
+  	select * from small3_category where sm3_sm2_cat_id = #{sm3_sm2_cat_id}
+  </select>
+</mapper>

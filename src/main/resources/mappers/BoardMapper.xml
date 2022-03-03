@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.green.lami.dao.BoardDAO">
+	<select id="selectBoard" resultType="kr.green.lami.vo.BoardVO">
+		select * from board where qa_id = #{qa_id} and qa_del = 'N'
+	</select>
+	<insert id="insertBoard" 
+		useGeneratedKeys="true"
+		keyProperty="board.qa_id"
+		parameterType="kr.green.lami.vo.BoardVO">
+		insert into 
+			board(
+				qa_title, qa_contents, qa_me_id, qa_created_date, qa_type,
+				qa_ori_id, qa_del)
+		<if test="board.qa_ori_id == 0">
+			select 
+				#{board.qa_title}, #{board.qa_contents}, #{board.qa_me_id}, 
+				now(), #{board.qa_type}, ifnull(max(qa_id),0)+1,	'N'
+			from board
+		</if>
+		<if test="board.qa_ori_id != 0">
+			values(#{board.qa_title}, #{board.qa_contents}, #{board.qa_me_id}, 
+				now(), #{board.qa_type}, #{board.qa_ori_id},	'N')
+		</if>
+	</insert>
+	<select id="selectBoardList" resultType="kr.green.lami.vo.BoardVO">
+		select * from board where qa_type = #{cri.type} and qa_del = 'N'
+			and qa_title like concat('%', #{cri.search}, '%')
+			order by qa_ori_id desc, qa_id asc
+			limit #{cri.pageStart}, #{cri.perPageNum}
+	</select>
+	
+	<update id="updateBoard">
+		update board set
+			qa_title = #{board.qa_title},
+			qa_contents = #{board.qa_contents},
+			qa_modified_date = now()
+		where qa_id = #{board.qa_id}
+	</update>
+	<update id="deleteBoard">
+		update board set
+			qa_del = 'Y',
+			qa_del_date = now()
+		where qa_id = #{qa_id}
+	</update>
+	<insert id="insertFile">
+		insert into file(fi_ori_name, fi_id, fi_co_qa_id, fi_table_name)
+		values(#{file.fi_ori_name}, #{file.fi_id}, #{file.fi_co_qa_id}, #{file.fi_table_name})
+	</insert>
+
+	<update id="deleteFile">
+		update file set
+			fi_del = 'Y',
+			fi_del_date = now()
+		where fi_id = #{file.fi_id}
+	</update>
+	
+	<select id="selectBoardCount" resultType="int">
+		select count(*) from board
+			where qa_type = #{cri.type} and qa_del = 'N'
+				and qa_title like concat('%', #{cri.search} ,'%')
+	</select>
+	
+	<select id="selectFileList" resultType="kr.green.lami.vo.FileVO">
+		select * from file 
+			where fi_co_qa_id = #{qa_id} and fi_del is null and fi_table_name = #{fi_table_name}
+	</select>
+	
+</mapper>

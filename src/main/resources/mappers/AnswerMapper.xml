@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.green.lami.dao.AnswerDAO">
+<insert id="insertAnswer">
+		insert into 
+			answer(an_qa_id, an_me_id, an_contents)
+			select 
+				#{answer.an_qa_id}, 
+				#{answer.an_me_id}, 
+				#{answer.an_contents}
+			from answer
+	</insert>
+	<select id="selectAnswerList" resultType="kr.green.lami.vo.AnswerVO">
+		select * from answer
+			where an_qa_id = #{qa_id} and an_del = 'N'
+			order by an_id desc
+			limit #{cri.pageStart}, #{cri.perPageNum}
+	</select>
+	<select id="selectAnswerCount" resultType="int">
+		select count(*) from answer
+			where an_qa_id = #{qa_id} and an_del = 'N'
+	</select>
+	<select id="selectAnswer" resultType="kr.green.lami.vo.AnswerVO">
+		select * from answer
+		where an_id = #{an_id} and an_del = 'N'
+	</select>	
+	<update id="deleteAnswer">
+		update answer set an_del = 'Y' where an_id = #{an_id}
+	</update>
+	<update id="updateAnswer">
+		update answer set an_contents = #{answer.an_contents}
+		where an_id = #{answer.an_id}
+	</update>
+</mapper>
