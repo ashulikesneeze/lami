@@ -48,7 +48,7 @@ public class CategoryServiceImp implements CategoryService {
 	@Override
 	public List<Small3CategoryVO> selectSmall3Category(Integer sm3_sm2_cat_id) {
 		if(sm3_sm2_cat_id == null || sm3_sm2_cat_id <= 0)
-		return null;
+			return null;
 		return categoryDao.selectSmall3Category(sm3_sm2_cat_id);
 	}
 
