@@ -12,12 +12,7 @@ import org.springframework.stereotype.Service;
 
 
 import kr.green.lami.dao.MemberDAO;
-import kr.green.lami.vo.MainCategoryVO;
 import kr.green.lami.vo.MemberVO;
-import kr.green.lami.vo.MiddleCategoryVO;
-import kr.green.lami.vo.Small2CategoryVO;
-import kr.green.lami.vo.Small3CategoryVO;
-import kr.green.lami.vo.SmallCategoryVO;
 
 @Service
 public class MemberServiceImp implements MemberService {
@@ -186,39 +181,6 @@ public class MemberServiceImp implements MemberService {
 	@Override
 	public MemberVO selectMemberBySessionId(String me_session_id) {
 		return memberDao.selectMemberBySessionId(me_session_id);
-	}
-
-	@Override
-	public List<MainCategoryVO> selectMainCategory() {
-		return memberDao.selectMainCategory();
-	}
-
-	@Override
-	public List<MiddleCategoryVO> selectMiddleCategory(Integer mid_ma_cat_id) {
-		if(mid_ma_cat_id == null || mid_ma_cat_id <= 0)
-			return null;
-		return memberDao.selectMiddleCategory(mid_ma_cat_id);
-	}
-
-	@Override
-	public List<SmallCategoryVO> selectSmallCategory(Integer sm_mid_cat_id) {
-		if(sm_mid_cat_id == null || sm_mid_cat_id <= 0)
-		return null;
-		return memberDao.selectSmallCategory(sm_mid_cat_id);
-	}
-
-	@Override
-	public List<Small2CategoryVO> selectSmall2Category(Integer sm2_sm_cat_id) {
-		if(sm2_sm_cat_id == null || sm2_sm_cat_id <= 0)
-		return null;
-		return memberDao.selectSmall2Category(sm2_sm_cat_id);
-	}
-
-	@Override
-	public List<Small3CategoryVO> selectSmall3Category(Integer sm3_sm2_cat_id) {
-		if(sm3_sm2_cat_id == null || sm3_sm2_cat_id <= 0)
-		return null;
-		return memberDao.selectSmall3Category(sm3_sm2_cat_id);
 	}
 
 }

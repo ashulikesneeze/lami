@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.green.lami.dao.CategoryDAO">
+	 <select id="selectMainCategory" resultType="kr.green.lami.vo.MainCategoryVO">
+	  	select * from main_category
+	  </select>
+	   <select id="selectMiddleCategory" resultType="kr.green.lami.vo.MiddleCategoryVO">
+	  	select * from middle_category where mid_ma_cat_id = #{mid_ma_cat_id}
+	  </select>
+	   <select id="selectSmallCategory" resultType="kr.green.lami.vo.SmallCategoryVO">
+	  	select * from small_category where sm_mid_cat_id = #{sm_mid_cat_id}
+	  </select>
+	   <select id="selectSmall2Category" resultType="kr.green.lami.vo.Small2CategoryVO">
+	  	select * from small2_category where sm2_sm_cat_id = #{sm2_sm_cat_id}
+	  </select>
+	   <select id="selectSmall3Category" resultType="kr.green.lami.vo.Small3CategoryVO">
+	  	select * from small3_category where sm3_sm2_cat_id = #{sm3_sm2_cat_id}
+	  </select>
+</mapper>

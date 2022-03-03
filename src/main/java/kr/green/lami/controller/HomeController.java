@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.green.lami.service.CategoryService;
 import kr.green.lami.service.MemberService;
 import kr.green.lami.vo.MainCategoryVO;
 import kr.green.lami.vo.MemberVO;
@@ -30,6 +31,8 @@ public class HomeController {
 	
 	@Autowired
 	MemberService memberService;
+	@Autowired
+	CategoryService categoryService;
 	
 	@RequestMapping(value= "/")
 	public ModelAndView openTilesView(ModelAndView mv) throws Exception{
@@ -127,7 +130,7 @@ public class HomeController {
 	@RequestMapping(value = "/maincategory")
 	public Map<String,Object> maincategory() {
 		HashMap<String, Object> map = new HashMap<String, Object>();
-		List<MainCategoryVO> list = memberService.selectMainCategory();
+		List<MainCategoryVO> list = categoryService.selectMainCategory();
 		map.put("list", list);
 		return map; 
 	}
@@ -135,7 +138,7 @@ public class HomeController {
 	@RequestMapping(value = "/middlecategory")
 	public Map<String,Object> middlecategory(Integer mid_ma_cat_id) {
 		HashMap<String, Object> map = new HashMap<String, Object>();
-		List<MiddleCategoryVO> list = memberService.selectMiddleCategory(mid_ma_cat_id);
+		List<MiddleCategoryVO> list = categoryService.selectMiddleCategory(mid_ma_cat_id);
 		map.put("list", list);
 		return map; 
 	}
@@ -143,7 +146,7 @@ public class HomeController {
 	@RequestMapping(value = "/smallcategory")
 	public Map<String,Object> smallcategory(Integer sm_mid_cat_id) {
 		HashMap<String, Object> map = new HashMap<String, Object>();
-		List<SmallCategoryVO> list = memberService.selectSmallCategory(sm_mid_cat_id);
+		List<SmallCategoryVO> list = categoryService.selectSmallCategory(sm_mid_cat_id);
 		map.put("list", list);
 		return map; 
 	}
@@ -152,7 +155,7 @@ public class HomeController {
 	@RequestMapping(value = "/small2category")
 	public Map<String,Object> small2category(Integer sm2_sm_cat_id) {
 		HashMap<String, Object> map = new HashMap<String, Object>();
-		List<Small2CategoryVO> list = memberService.selectSmall2Category(sm2_sm_cat_id);
+		List<Small2CategoryVO> list = categoryService.selectSmall2Category(sm2_sm_cat_id);
 		map.put("list", list);
 		return map; 
 	}
@@ -161,7 +164,7 @@ public class HomeController {
 	@RequestMapping(value = "/small3category")
 	public Map<String,Object> small3category(Integer sm3_sm2_cat_id) {
 		HashMap<String, Object> map = new HashMap<String, Object>();
-		List<Small3CategoryVO> list = memberService.selectSmall3Category(sm3_sm2_cat_id);
+		List<Small3CategoryVO> list = categoryService.selectSmall3Category(sm3_sm2_cat_id);
 		map.put("list", list);
 		return map; 
 	}
