@@ -24,4 +24,6 @@ public interface MemberService {
 	
 	MemberVO selectMemberBySessionId(String me_session_id);
 
+	boolean changeAuthority(MemberVO member, MemberVO user);
+
 }

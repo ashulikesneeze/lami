@@ -37,7 +37,15 @@
       			<li class="nav-item">
         			<a class="nav-link" href="<%=request.getContextPath()%>/board/list">Q&A</a>
      		 	</li>
-     		 		
+     		 	<li class="nav-item">
+        			<a class="nav-link" href="<%=request.getContextPath()%>/image">image</a>
+     		 	</li>
+     		 	<c:if test="${user != null && user.me_authority == 'super' }">
+			      	<li class="nav-item">
+			        	<a class="nav-link" href="<%=request.getContextPath()%>/admin/member/modify">회원관리</a>
+			      	</li> 
+		      	</c:if>   
+	     		 		 		
 	    	</ul>
 		</div> 
 	</div> 
