@@ -31,9 +31,9 @@ CREATE TABLE `file` (
   `fi_del` varchar(2) DEFAULT NULL,
   `fi_del_date` datetime DEFAULT NULL,
   `fi_co_qa_id` int NOT NULL,
-  `fi_table_name` varchar(15) NOT NULL,
+  `fi_table_name` varchar(15) DEFAULT 'board',
   PRIMARY KEY (`fi_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -42,6 +42,7 @@ CREATE TABLE `file` (
 
 LOCK TABLES `file` WRITE;
 /*!40000 ALTER TABLE `file` DISABLE KEYS */;
+INSERT INTO `file` VALUES (1,'1624179796026-4.jpg',NULL,NULL,NULL,6,'board'),(2,'1624179796026-4.jpg',NULL,NULL,NULL,5,'board'),(3,'2018-05-12 13.41.22.png',NULL,NULL,NULL,7,'board'),(4,'1616847125742.jpg',NULL,NULL,NULL,7,'board'),(5,'1616847125742.jpg',NULL,NULL,NULL,7,'board'),(6,'IMG_20190906_082158_238.jpg',NULL,NULL,NULL,8,'board'),(7,'2018-05-12 13.41.22.png',NULL,NULL,NULL,9,'board');
 /*!40000 ALTER TABLE `file` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -54,4 +55,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-02-16 16:40:18
+-- Dump completed on 2022-03-03 11:35:39

@@ -28,10 +28,11 @@ CREATE TABLE `small_category` (
   `sm_cat_id` int NOT NULL AUTO_INCREMENT,
   `sm_cat_name` varchar(100) DEFAULT NULL,
   `sm_mid_cat_id` int DEFAULT NULL,
+  `sm_count` int NOT NULL DEFAULT '0',
   PRIMARY KEY (`sm_cat_id`),
   KEY `FK_middle_category_TO_small_category_1` (`sm_mid_cat_id`),
   CONSTRAINT `FK_middle_category_TO_small_category_1` FOREIGN KEY (`sm_mid_cat_id`) REFERENCES `middle_category` (`mid_cat_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=72 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,6 +41,7 @@ CREATE TABLE `small_category` (
 
 LOCK TABLES `small_category` WRITE;
 /*!40000 ALTER TABLE `small_category` DISABLE KEYS */;
+INSERT INTO `small_category` VALUES (1,'Docs',5,0),(2,'etc',5,0),(3,'food',5,0),(4,'Herrogate',5,0),(5,'Ibiza',5,0),(6,'Pharmacy',5,2),(7,'Bdays',6,0),(8,'Daddy\'s 70th Bday',6,0),(9,'Japen',6,0),(10,'Manchester Paris',6,0),(11,'나들이',6,0),(12,'어린이대공원',6,0),(13,'장자못공원',6,0),(14,'집콕',6,0),(15,'Bonnaroo',7,0),(16,'Busan',7,0),(17,'camp with 귀희',7,0),(18,'Canada with Casey',7,0),(19,'Thai with Casey',7,0),(20,'THai with Eva',7,0),(21,'with Daddy',7,0),(22,'normal day',10,0),(23,'perhaps special day',10,0),(24,'다같이',13,0),(25,'성민 ',13,0),(26,'승민',13,0),(27,'예원',13,0),(28,'pals',18,0),(29,'경진&현주',18,0),(30,'귀남&은숙',18,0),(31,'귀희&류아',18,0),(32,'세영',18,0),(33,'은비',18,0),(34,'인환',18,0),(35,'혜은&미숙\'s fam',18,0),(36,'bros',21,0),(37,'mom&dad',21,0),(38,'nephews&niece',21,0),(39,'G4',31,0),(40,'others',31,0),(41,'Woody&Clint',31,0),(42,'here&there',35,0),(43,'homecook',35,0),(44,'Spain Club&sushi,Thai',35,0),(45,'을지감성',35,0),(46,'Camping1',40,0),(47,'Camping2',40,0),(48,'You&I',40,0),(49,'2021.3',46,0),(50,'2021.4',46,0),(51,'2021.5',46,0),(52,'2021.6',46,0),(53,'2021.7',46,0),(54,'2021.8',46,0),(55,'2021.9',46,0),(56,'2021.10',46,0),(57,'2021.11',46,0),(58,'2021.12',46,0),(59,'2022.1',46,0),(60,'2022.2',46,0),(61,'baby boss meeting',46,0),(62,'hiking',47,0),(63,'home-part1',47,0),(64,'home-part2',47,0),(65,'home-part3',47,0),(66,'home-part4',47,0),(67,'아빠와 나들이',47,0),(68,'take1',57,0),(69,'take2',57,0),(70,'take3',57,0),(71,'take4',57,0);
 /*!40000 ALTER TABLE `small_category` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -52,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-02-16 16:40:20
+-- Dump completed on 2022-03-03 11:35:38

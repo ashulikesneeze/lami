@@ -28,7 +28,7 @@ CREATE TABLE `main_category` (
   `ma_cat_id` int NOT NULL AUTO_INCREMENT,
   `ma_cat_name` varchar(100) NOT NULL,
   PRIMARY KEY (`ma_cat_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -37,6 +37,7 @@ CREATE TABLE `main_category` (
 
 LOCK TABLES `main_category` WRITE;
 /*!40000 ALTER TABLE `main_category` DISABLE KEYS */;
+INSERT INTO `main_category` VALUES (1,'events'),(2,'UsFam'),(3,'Ashu'),(4,'Casey'),(5,'Lami'),(6,'Ryker');
 /*!40000 ALTER TABLE `main_category` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -49,4 +50,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-02-16 16:40:17
+-- Dump completed on 2022-03-03 11:35:39

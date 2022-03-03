@@ -31,7 +31,7 @@ CREATE TABLE `small2_category` (
   PRIMARY KEY (`sm2_cat_id`),
   KEY `FK_small_category_TO_small2_category_1` (`sm2_sm_cat_id`),
   CONSTRAINT `FK_small_category_TO_small2_category_1` FOREIGN KEY (`sm2_sm_cat_id`) REFERENCES `small_category` (`sm_cat_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,6 +40,7 @@ CREATE TABLE `small2_category` (
 
 LOCK TABLES `small2_category` WRITE;
 /*!40000 ALTER TABLE `small2_category` DISABLE KEYS */;
+INSERT INTO `small2_category` VALUES (1,'party',6),(2,'Pharmacy Ball',6),(3,'Bonnaroo-On',15),(4,'wedding&post-Bonnaroo',15),(5,'food',16),(6,'museum DANAWA',16),(7,'Avata Hotel',19),(8,'Krabi',19),(9,'Phi Phi Island',19),(10,'Phuket',19),(11,'Railay Beach',19),(12,'Bangkok',20),(13,'boat tour',20),(14,'food & massage',20),(15,'Krabi Beach',20),(16,'scenery',20),(17,'cambodia-Siem Reap',21),(18,'Vietnam',21),(19,'성민아가아가',25),(20,'성민아장아장',25),(21,'성민유치원',25),(22,'성민저초딩',25),(23,'베뷔승민',26),(24,'아장아장승민',26);
 /*!40000 ALTER TABLE `small2_category` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -52,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-02-16 16:40:20
+-- Dump completed on 2022-03-03 11:35:38

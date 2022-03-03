@@ -28,13 +28,13 @@ CREATE TABLE `small3_category` (
   `sm3_cat_id` int NOT NULL AUTO_INCREMENT,
   `sm3_cat_name` varchar(100) DEFAULT NULL,
   `sm3_sm2_cat_id` int DEFAULT NULL,
-  `sm3_pro_id` int NOT NULL,
+  `sm3_pro_id` int DEFAULT NULL,
   PRIMARY KEY (`sm3_cat_id`),
   KEY `FK_small2_category_TO_small3_category_1` (`sm3_sm2_cat_id`),
   KEY `FK_product_TO_small3_category_1` (`sm3_pro_id`),
   CONSTRAINT `FK_product_TO_small3_category_1` FOREIGN KEY (`sm3_pro_id`) REFERENCES `product` (`pro_id`),
   CONSTRAINT `FK_small2_category_TO_small3_category_1` FOREIGN KEY (`sm3_sm2_cat_id`) REFERENCES `small2_category` (`sm2_cat_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -43,6 +43,7 @@ CREATE TABLE `small3_category` (
 
 LOCK TABLES `small3_category` WRITE;
 /*!40000 ALTER TABLE `small3_category` DISABLE KEYS */;
+INSERT INTO `small3_category` VALUES (1,'Angkor Wat',17,NULL),(2,'boat trip',18,NULL),(3,'Danang',18,NULL),(4,'temple',18,NULL);
 /*!40000 ALTER TABLE `small3_category` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -55,4 +56,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-02-16 16:40:18
+-- Dump completed on 2022-03-03 11:35:39

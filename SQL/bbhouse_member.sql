@@ -36,7 +36,7 @@ CREATE TABLE `member` (
   `me_authority` varchar(10) NOT NULL DEFAULT 'member',
   `me_created_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `me_modified_date` datetime DEFAULT CURRENT_TIMESTAMP,
-  `me_active/inactive` int NOT NULL DEFAULT '0',
+  `me_active_inactive` int NOT NULL DEFAULT '0',
   `me_session_id` varchar(45) DEFAULT NULL,
   `me_session_limit` datetime DEFAULT NULL,
   `me_sub_address` varchar(50) DEFAULT NULL,
@@ -52,6 +52,7 @@ CREATE TABLE `member` (
 
 LOCK TABLES `member` WRITE;
 /*!40000 ALTER TABLE `member` DISABLE KEYS */;
+INSERT INTO `member` VALUES ('ashu12','$2a$10$84wFh1k.RZaciSaGPODD3.CdsDTOblD0tdSl7HYEcjUG9GshmQ5Lu','ashu lee','여성','1981-01-27','충북 청주시 서원구 신성화로 8','010-5688-6275','ashu12@daum.net','member','2022-02-18 11:47:13','2022-02-18 11:47:13',0,NULL,NULL,'306-601',28639,'2022-02-18 11:47:13'),('Lami21','$2a$10$1/gF7qk37WdKf7uZCblJOeZ3VNhip35SFBl6UhuC6L.y8kGnTM5EW','Lami Hyma','여성','2020-06-18','충북 청주시 서원구 성화동 616 306-601 306-601 306-601 306-601','010-5688-6275','ashu12@daum.net','member','2022-03-02 11:26:48','2022-03-02 11:26:48',0,NULL,NULL,'306-601',28639,'2022-03-02 11:26:48');
 /*!40000 ALTER TABLE `member` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -64,4 +65,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-02-16 16:40:20
+-- Dump completed on 2022-03-03 11:35:38
