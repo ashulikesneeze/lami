@@ -43,7 +43,7 @@ CREATE TABLE `small3_category` (
 
 LOCK TABLES `small3_category` WRITE;
 /*!40000 ALTER TABLE `small3_category` DISABLE KEYS */;
-INSERT INTO `small3_category` VALUES (1,'Angkor Wat',17,NULL),(2,'boat trip',18,NULL),(3,'Danang',18,NULL),(4,'temple',18,NULL);
+INSERT INTO `small3_category` VALUES (1,'Angkor Wat',1,NULL),(2,'boat trip',2,NULL),(3,'Danang',2,NULL),(4,'temple',2,NULL);
 /*!40000 ALTER TABLE `small3_category` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -56,4 +56,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-03-03 11:35:39
+-- Dump completed on 2022-03-03 15:25:50

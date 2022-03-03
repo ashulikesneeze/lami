@@ -28,6 +28,7 @@ CREATE TABLE `small2_category` (
   `sm2_cat_id` int NOT NULL AUTO_INCREMENT,
   `sm2_cat_name` varchar(100) DEFAULT NULL,
   `sm2_sm_cat_id` int DEFAULT NULL,
+  `sm2_count` int NOT NULL DEFAULT '0',
   PRIMARY KEY (`sm2_cat_id`),
   KEY `FK_small_category_TO_small2_category_1` (`sm2_sm_cat_id`),
   CONSTRAINT `FK_small_category_TO_small2_category_1` FOREIGN KEY (`sm2_sm_cat_id`) REFERENCES `small_category` (`sm_cat_id`)
@@ -40,7 +41,7 @@ CREATE TABLE `small2_category` (
 
 LOCK TABLES `small2_category` WRITE;
 /*!40000 ALTER TABLE `small2_category` DISABLE KEYS */;
-INSERT INTO `small2_category` VALUES (1,'party',6),(2,'Pharmacy Ball',6),(3,'Bonnaroo-On',15),(4,'wedding&post-Bonnaroo',15),(5,'food',16),(6,'museum DANAWA',16),(7,'Avata Hotel',19),(8,'Krabi',19),(9,'Phi Phi Island',19),(10,'Phuket',19),(11,'Railay Beach',19),(12,'Bangkok',20),(13,'boat tour',20),(14,'food & massage',20),(15,'Krabi Beach',20),(16,'scenery',20),(17,'cambodia-Siem Reap',21),(18,'Vietnam',21),(19,'성민아가아가',25),(20,'성민아장아장',25),(21,'성민유치원',25),(22,'성민저초딩',25),(23,'베뷔승민',26),(24,'아장아장승민',26);
+INSERT INTO `small2_category` VALUES (1,'party',6,1),(2,'Pharmacy Ball',6,3),(3,'Bonnaroo-On',15,0),(4,'wedding&post-Bonnaroo',15,0),(5,'food',16,0),(6,'museum DANAWA',16,0),(7,'Avata Hotel',19,0),(8,'Krabi',19,0),(9,'Phi Phi Island',19,0),(10,'Phuket',19,0),(11,'Railay Beach',19,0),(12,'Bangkok',20,0),(13,'boat tour',20,0),(14,'food & massage',20,0),(15,'Krabi Beach',20,0),(16,'scenery',20,0),(17,'cambodia-Siem Reap',21,1),(18,'Vietnam',21,3),(19,'성민아가아가',25,0),(20,'성민아장아장',25,0),(21,'성민유치원',25,0),(22,'성민저초딩',25,0),(23,'베뷔승민',26,0),(24,'아장아장승민',26,0);
 /*!40000 ALTER TABLE `small2_category` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -53,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-03-03 11:35:38
+-- Dump completed on 2022-03-03 15:25:49
