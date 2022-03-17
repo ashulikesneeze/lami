@@ -140,19 +140,19 @@
 	</div>
 </div>
 <div class="category-box">
-	<ul class="main-category">
+	<ul class="main-category category">
 		<li class="list-item">
 			<a href="javascript:;"></a>
 		</li>
 	</ul>
 	<div class="sub-category-box">
-		<ul class="middle-category">
+		<ul class="middle-category category">
 		</ul>
-		<ul class="small-category">
+		<ul class="small-category category">
 		</ul>
-		<ul class="small2-category">
+		<ul class="small2-category category">
 		</ul>
-		<ul class="small3-category">
+		<ul class="small3-category category">
 		</ul>
 	</div>
 </div>
@@ -168,29 +168,14 @@ $(function(){
 	});
 	
 	
-	setMainCategory();	
+	loadCategory(0, 1);
 	
-	$(document).on('click','.main-category>.list-item',function(){
-		var ma_cat_id = $(this).data('target');
+	$(document).on('click','.category>.list-item',function(){
+		var cat_id = $(this).data('target');
+		var cat_depth = $(this).data('depth');
 		$(this).addClass('active').siblings().removeClass('active');
-		setMiddleCategory(ma_cat_id);
+		loadCategory(cat_id, cat_depth);
 	});
-	$(document).on('click','.middle-category>.list-item',function(){
-		var mid_cat_id = $(this).data('target');
-		$(this).addClass('active').siblings().removeClass('active');
-		setSmallCategory(mid_cat_id);
-	});
-	$(document).on('click','.small-category>.list-item',function(){
-		var sm_cat_id = $(this).data('target');
-		$(this).addClass('active').siblings().removeClass('active');
-		setSmall2Category(sm_cat_id);
-	});
-	$(document).on('click','.small2-category>.list-item',function(){
-		var sm2_cat_id = $(this).data('target');
-		$(this).addClass('active').siblings().removeClass('active');
-		setSmall3Category(sm2_cat_id);
-	});
-	
 	
 });
 
@@ -198,132 +183,46 @@ $(function(){
 
 
 
-function setMainCategory(){
+function loadCategory(id, depth){
+	console.log(id+', ' + depth)
 	var str = '';
+	var category = {
+			cat_ori_num : id,
+			cat_depth : depth
+	}
+	var selector = [
+		'.main-category',
+		'.middle-category',
+		'.small-category',
+		'.small2-category',
+		'.small3-category'
+	];
 	$.ajax({
 		async:false,
-		type:'get',
-		url: '<%=request.getContextPath()%>/maincategory',
+		type:'post',
+		data: JSON.stringify(category),
+		url: '<%=request.getContextPath()%>/category',
+		contentType:'application/json; charset=UTF-8',
 		dataType:"json",
 		success : function(res){
-			
 			var list = res.list; 
-			for(main of list){
-				str += '<li class="list-item" data-target="'+main.ma_cat_id+'"><a href="javascript:;">'+main.ma_cat_name+'</a></li>'
+			if(list.length == 0)
+				location.href = '<%=request.getContextPath()%>?cat_id=' + id;
+			for(category of list){
+				str += '<li class="list-item" data-target="'+category.cat_id+'"data-depth="'+ (category.cat_depth+1) +'"><a href="javascript:;">'+category.cat_name+'</a></li>'
 			}
-			$(' .main-category').html(str); 
+			$(selector[depth-1]).html(str);
+			if(depth == 1)
+				return;
+			$('.category').each(function(index){
+				$(this).show();
+				if(index >= depth)
+					$(this).hide();
+			})
 		}
 	});
 }
-function setMiddleCategory(ma_cat_id) {
-	var str = '';
-	//대분류에서 대분류라는 항목이 선택된 경우 
-	if(ma_cat_id <= 0) {
-		$('.middle-category').html(str);
-		return; 
-	}
-	
-	$.ajax({
-		async:false,
-		type:'get',
-		url: '<%=request.getContextPath()%>/middlecategory?mid_ma_cat_id='+ma_cat_id,
-		dataType:"json",
-		success : function(res){
-			
-			var list = res.list;
-			if(list != null){
-				for(middle of list){
-					if(middle.mid_count != 0)
-						str += '<li class="list-item" data-target="'+middle.mid_cat_id+'"><a href="javascript:;">'+middle.mid_cat_name+'('+middle.mid_count+')</a></li>';
-					else
-						str += '<li class="list-item" data-target="'+middle.mid_cat_id+'"><a href="<%=request.getContextPath()%>?mid_cat_id='+middle.mid_cat_id+'">'+middle.mid_cat_name+'</a></li>';
-				}
-			}
-			$(' .middle-category').html(str);
-			$(' .small-category').html(''); 
-			$(' .small2-category').html(''); 
-			$(' .small3-category').html(''); 
-		}
-	});
-}
-function setSmallCategory(mid_cat_id) {
-	var str = '';
-	if(mid_cat_id <= 0) {
-		$(' .small-category').html(str);
-		return; 
-	}
-	$.ajax({
-		async:false,
-		type:'get',
-		url: '<%=request.getContextPath()%>/smallcategory?sm_mid_cat_id='+mid_cat_id,
-		dataType:"json",
-		success : function(res){
-			
-			var list = res.list; 
-			if(list.length != 0){
-				for(small of list){
-					if(small.sm_count != 0)
-						str += '<li class="list-item" data-target="'+small.sm_cat_id+'"><a href="javascript:;">'+small.sm_cat_name+'('+small.sm_count+')</a></li>';
-					else
-						str += '<li class="list-item" data-target="'+small.sm_cat_id+'"><a href="<%=request.getContextPath()%>?sm_cat_id='+small.sm_cat_id+'">'+small.sm_cat_name+'</a></li>';
-				}
-			}
-			$(' .small-category').html(str); 
-			$(' .small2-category').html(''); 
-			$(' .small3-category').html(''); 
-		}
-	});
-}
-function setSmall2Category(sm_cat_id) {
-	var str = '';
-	if(sm_cat_id <= 0) {
-		$(' .small2-category').html(str);
-		return; 
-	}
-	console.log(sm_cat_id)
-	$.ajax({
-		async:false,
-		type:'get',
-		url: '<%=request.getContextPath()%>/small2category?sm2_sm_cat_id='+sm_cat_id,
-		dataType:"json",
-		success : function(res){
-			console.log(res);
-			var list = res.list; 
 
-			for(small2 of list){
-				if(small2.sm2_count != 0)
-					str += '<li class="list-item" data-target="'+small2.sm2_cat_id+'"><a href="javascript:;">'+small2.sm2_cat_name+'('+small2.sm2_count+')</a></li>';
-				else
-					str += '<li class="list-item" data-target="'+small2.sm2_cat_id+'"><a href="<%=request.getContextPath()%>?sm2_cat_id='+small2.sm2_cat_id+'">'+small2.sm2_cat_name+'</a></li>';
-			}
-			$(' .small2-category').html(str); 
-			$(' .small3-category').html(''); 
-		}
-	});
-}
-function setSmall3Category(sm2_cat_id) {
-	var str = '';
-	if(sm2_cat_id <= 0) {
-		$(' .small3-category').html(str);
-		return; 
-	}
-	console.log(sm2_cat_id)
-	$.ajax({
-		async:false,
-		type:'get',
-		url: '<%=request.getContextPath()%>/small3category?sm3_sm2_cat_id='+sm2_cat_id,
-		dataType:"json",
-		success : function(res){
-			console.log(res);
-			var list = res.list; 
-
-			for(small3 of list){
-				str += '<li class="list-item" data-target="'+small3.sm2_cat_id+'"><a href="<%=request.getContextPath()%>?sm3_cat_id='+small3.sm3_cat_id+'">'+small3.sm3_cat_name+'</a></li>';
-			}
-			$(' .small3-category').html(str); 
-		}
-	});
-}
 </script>
 </body>
 </html>

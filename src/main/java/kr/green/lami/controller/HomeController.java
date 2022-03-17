@@ -1,5 +1,6 @@
 package kr.green.lami.controller;
 
+import java.io.File;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -19,7 +20,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import kr.green.lami.service.CategoryService;
 import kr.green.lami.service.MemberService;
-import kr.green.lami.vo.MainCategoryVO;
+import kr.green.lami.service.ProductService;
+import kr.green.lami.vo.CategoryVO;
 import kr.green.lami.vo.MemberVO;
 import kr.green.lami.vo.MiddleCategoryVO;
 import kr.green.lami.vo.Small2CategoryVO;
@@ -33,6 +35,8 @@ public class HomeController {
 	MemberService memberService;
 	@Autowired
 	CategoryService categoryService;
+	@Autowired
+	ProductService productService;
 	
 	@RequestMapping(value= "/")
 	public ModelAndView openTilesView(ModelAndView mv) throws Exception{
@@ -127,46 +131,36 @@ public class HomeController {
 	}
 	
 	@ResponseBody
-	@RequestMapping(value = "/maincategory")
-	public Map<String,Object> maincategory() {
+	@RequestMapping(value = "/category")
+	public Map<String,Object> maincategory(@RequestBody CategoryVO ca) {
 		HashMap<String, Object> map = new HashMap<String, Object>();
-		List<MainCategoryVO> list = categoryService.selectMainCategory();
+		System.out.println(ca);
+		List<CategoryVO> list = categoryService.selectCategory(ca);
 		map.put("list", list);
 		return map; 
 	}
-	@ResponseBody
-	@RequestMapping(value = "/middlecategory")
-	public Map<String,Object> middlecategory(Integer mid_ma_cat_id) {
-		HashMap<String, Object> map = new HashMap<String, Object>();
-		List<MiddleCategoryVO> list = categoryService.selectMiddleCategory(mid_ma_cat_id);
-		map.put("list", list);
-		return map; 
-	}
-	@ResponseBody
-	@RequestMapping(value = "/smallcategory")
-	public Map<String,Object> smallcategory(Integer sm_mid_cat_id) {
-		HashMap<String, Object> map = new HashMap<String, Object>();
-		List<SmallCategoryVO> list = categoryService.selectSmallCategory(sm_mid_cat_id);
-		map.put("list", list);
-		return map; 
+	@RequestMapping(value= "/init")
+	public ModelAndView init(ModelAndView mv){
+	    
+		mv.setViewName("redirect:/"); 
+		String DATA_DIRECTORY = "D:/JAVA_JIK/upload";
+		traceFile(DATA_DIRECTORY, "/");
+	  return mv;
 	}
 	
-	@ResponseBody
-	@RequestMapping(value = "/small2category")
-	public Map<String,Object> small2category(Integer sm2_sm_cat_id) {
-		HashMap<String, Object> map = new HashMap<String, Object>();
-		List<Small2CategoryVO> list = categoryService.selectSmall2Category(sm2_sm_cat_id);
-		map.put("list", list);
-		return map; 
-	}
-	
-	@ResponseBody
-	@RequestMapping(value = "/small3category")
-	public Map<String,Object> small3category(Integer sm3_sm2_cat_id) {
-		HashMap<String, Object> map = new HashMap<String, Object>();
-		List<Small3CategoryVO> list = categoryService.selectSmall3Category(sm3_sm2_cat_id);
-		map.put("list", list);
-		return map; 
+	public void traceFile(String root, String dic) {
+		File dir = new File(root+dic);
+		
+		String []filenames = dir.list();
+		for(String filename : filenames) {
+			File file = new File(root+dic+filename);
+			if(file.isDirectory()) {
+				traceFile(root, dic+filename+"/");
+			}else {
+				productService.initImage(dic, filename);
+				System.out.println(dic+filename);
+			}
+		}
 	}
 }
 

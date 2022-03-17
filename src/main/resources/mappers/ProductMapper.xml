@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.green.lami.dao.ProductDAO">
+	<select id="selectCategoryByPath" resultType="int">
+		select cat_id from category where cat_path = #{cat_path}
+	</select>
+	<insert id="insertImage">
+		insert into image(img_name, img_pro_id, img_type)
+			values(#{img.img_name},#{img.img_pro_id},#{img.img_type})
+	</insert>
+	<select id="selectProduct" resultType="kr.green.lami.vo.ProductVO">
+		select * from product where pro_cat_id = #{cat_id}
+	</select>
+	<insert id="insertProduct">
+		insert into product(pro_name, pro_details, pro_cat_id)
+			values(#{pro.pro_name},#{pro.pro_details},#{pro.pro_cat_id})
+	</insert>
+	<select id="selectImage" resultType="kr.green.lami.vo.ImageVO">
+		select * from image where img_pro_id = #{pro_id} and img_name = #{img_name}
+	</select>
+</mapper>
