@@ -143,7 +143,7 @@ public class HomeController {
 	public ModelAndView init(ModelAndView mv){
 	    
 		mv.setViewName("redirect:/"); 
-		String DATA_DIRECTORY = "D:/JAVA_JIK/upload";
+		String DATA_DIRECTORY = "D:/pic/Send Anywhere (2022-02-07 14-30-36)";
 		traceFile(DATA_DIRECTORY, "/");
 	  return mv;
 	}

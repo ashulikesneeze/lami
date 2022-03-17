@@ -13,7 +13,8 @@
 	<select id="selectProduct" resultType="kr.green.lami.vo.ProductVO">
 		select * from product where pro_cat_id = #{cat_id}
 	</select>
-	<insert id="insertProduct">
+	<insert id="insertProduct" useGeneratedKeys="true" keyProperty="pro.pro_id"
+		parameterType="kr.green.lami.vo.ProductVO">
 		insert into product(pro_name, pro_details, pro_cat_id)
 			values(#{pro.pro_name},#{pro.pro_details},#{pro.pro_cat_id})
 	</insert>

@@ -36,10 +36,12 @@ public class ProductServiceImp implements ProductService {
 		List<String> imgList = Arrays.asList(img);
 		List<String> videoList = Arrays.asList(video);
 		String ext = filename.substring(filename.lastIndexOf('.'));
+		
 		if(imgList.contains(ext)) {
-			
+			System.out.println(0);
 			productDao.insertImage(new ImageVO(filename,  productVo.getPro_id(), 0));
 		}else if(videoList.contains(ext)) {
+			System.out.println(1);
 			productDao.insertImage(new ImageVO(filename,  productVo.getPro_id(), 1));
 		}
 		
