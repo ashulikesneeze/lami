@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `bbhouse` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `bbhouse`;
 -- MySQL dump 10.13  Distrib 8.0.27, for Win64 (x86_64)
 --
 -- Host: localhost    Database: bbhouse
@@ -32,7 +30,7 @@ CREATE TABLE `image` (
   PRIMARY KEY (`img_id`),
   KEY `FK_product_TO_image_1` (`img_pro_id`),
   CONSTRAINT `FK_product_TO_image_1` FOREIGN KEY (`img_pro_id`) REFERENCES `product` (`pro_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,6 +39,7 @@ CREATE TABLE `image` (
 
 LOCK TABLES `image` WRITE;
 /*!40000 ALTER TABLE `image` DISABLE KEYS */;
+INSERT INTO `image` VALUES (2,'고양이 바탕화면 02 1920x1080.jpg',1,0),(3,'고양이 바탕화면 02 2560x1440.jpg',1,0),(4,'고양이 바탕화면 1920x1080.jpg',1,0),(5,'고양이 바탕화면 2560x1440.jpg',1,0);
 /*!40000 ALTER TABLE `image` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -53,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-03-03 15:25:52
+-- Dump completed on 2022-03-17  9:39:59

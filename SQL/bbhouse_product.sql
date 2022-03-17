@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `bbhouse` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `bbhouse`;
 -- MySQL dump 10.13  Distrib 8.0.27, for Win64 (x86_64)
 --
 -- Host: localhost    Database: bbhouse
@@ -34,8 +32,11 @@ CREATE TABLE `product` (
   `pro_box_count` int DEFAULT NULL,
   `pro_created_date` datetime DEFAULT CURRENT_TIMESTAMP,
   `pro_modified_date` datetime DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`pro_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `pro_cat_id` int NOT NULL DEFAULT '1',
+  PRIMARY KEY (`pro_id`),
+  KEY `pro_cat_id_idx` (`pro_cat_id`),
+  CONSTRAINT `pro_cat_id` FOREIGN KEY (`pro_cat_id`) REFERENCES `category` (`cat_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -44,6 +45,7 @@ CREATE TABLE `product` (
 
 LOCK TABLES `product` WRITE;
 /*!40000 ALTER TABLE `product` DISABLE KEYS */;
+INSERT INTO `product` VALUES (1,'Ashu/trip','Ashu/trip',0,10000,5,NULL,'2022-03-16 14:32:01','2022-03-16 14:32:01',25);
 /*!40000 ALTER TABLE `product` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -56,4 +58,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-03-03 15:25:52
+-- Dump completed on 2022-03-17  9:39:59
