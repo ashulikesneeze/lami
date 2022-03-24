@@ -11,6 +11,7 @@ public class ImageVO {
 	private String img_name;
 	private int img_pro_id;
 	private int img_type;
+	private String img_name2;
 	public ImageVO(String img_name, int img_pro_id, int img_type) {
 		super();
 		this.img_name = img_name;

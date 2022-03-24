@@ -13,22 +13,23 @@
  		.album{
 			width : 1200px; margin: 0 auto;
  		}
- 		.rows{
- 			display: flex;
- 		}
+ 		
  		.thumb-box{
- 			width : 100%; padding : 10px; position: relative;
+ 			width : 25%; padding : 10px; position: relative; box-sizing: border-box; float: left;
  		}
  		.thumb{
- 			display: block; height: 100px; border : 1px solid red; 
+ 			display: block; height: 200px; border : 1px solid red; 
  		}
  		.thumb > img {
  			width : 100%; height : 100%; object-fit: cover;
  		}
+ 		.thumb-box:hover .popup-wrap{
+ 			display: block;
+ 		}
  		.thumb-box > .popup-wrap{
  			/* 앨범 보기를 키우고 싶으면 line-height를 높이면 됨*/
- 			position: absolute; line-height: 20px; top: calc(50% - 10px);
- 			text-align: center; background: white; left: 11px; right : 11px;
+ 			position: absolute; line-height: 20px; top: calc(50% - 10px); display: none; 
+ 			text-align: center; background: white; left: 11px; right : 11px; 
  		}
  		.btn-popup{
  			color : black; display: block;
@@ -57,198 +58,36 @@
 </head>
 	<body>
 		<div class="album">
-			<div class="rows">
+			<c:forEach items="${list }" var="pro"  varStatus="vs">
 				<div class="thumb-box">
 					<a href="#" class="thumb">
-						<img src="<%=request.getContextPath()%>/img//Lami/Lami with Daddy/home-part1/1597316726671.jpg" alt="Lami with Daddy">
+						<img src="<%=request.getContextPath()%>/img${pro.pro_img}" alt="Lami with Daddy">
 					</a>
 					<div class="popup-wrap">
-						<a href="#" class="btn-popup">앨범보기</a>
+						<a href="#" class="btn-popup" data-target="${vs.index }">앨범보기</a>
 					</div>
 				</div>
-				<div class="thumb-box">
-					<a href="#" class="thumb">
-						<img height="50" width="50" src="<%=request.getContextPath()%>/img//Lami/Lami with Daddy/home-part1/1597316726671.jpg" alt="Lami with Daddy">
-					</a>
-					<div class="popup-wrap">
-						<a href="#" class="btn-popup">앨범보기</a>
-					</div>
-				</div>
-				<div class="thumb-box">
-					<a href="#" class="thumb">
-						<img height="50" width="50" src="<%=request.getContextPath()%>/img//Lami/Lami with Daddy/home-part1/1597316726671.jpg" alt="Lami with Daddy">
-					</a>
-					<div class="popup-wrap">
-						<a href="#" class="btn-popup">앨범보기</a>
-					</div>
-				</div>
-				<div class="thumb-box">
-					<a href="#" class="thumb">
-						<img height="50" width="50" src="<%=request.getContextPath()%>/img//Lami/Lami with Daddy/home-part1/1597316726671.jpg" alt="Lami with Daddy">
-					</a>
-					<div class="popup-wrap">
-						<a href="#" class="btn-popup">앨범보기</a>
-					</div>
-				</div>
-				<div class="thumb-box">
-					<a href="#" class="thumb">
-						<img height="50" width="50" src="<%=request.getContextPath()%>/img//Lami/Lami with Daddy/home-part1/1597316726671.jpg" alt="Lami with Daddy">
-					</a>
-					<div class="popup-wrap">
-						<a href="#" class="btn-popup">앨범보기</a>
-					</div>
-				</div>		
-			</div>
-					<div class="rows">
-				<div class="thumb-box">
-					<a href="#" class="thumb">
-						<img height="50" width="50" src="<%=request.getContextPath()%>/img//Lami/Lami with Daddy/home-part1/1597316726671.jpg" alt="Lami with Daddy">
-					</a>
-					<div class="popup-wrap">
-						<a href="#" class="btn-popup">앨범보기</a>
-					</div>
-				</div>
-				<div class="thumb-box">
-					<a href="#" class="thumb">
-						<img height="50" width="50" src="<%=request.getContextPath()%>/img//Lami/Lami with Daddy/home-part1/1597316726671.jpg" alt="Lami with Daddy">
-					</a>
-					<div class="popup-wrap">
-						<a href="#" class="btn-popup">앨범보기</a>
-					</div>
-				</div>
-				<div class="thumb-box">
-					<a href="#" class="thumb">
-						<img height="50" width="50" src="<%=request.getContextPath()%>/img//Lami/Lami with Daddy/home-part1/1597316726671.jpg" alt="Lami with Daddy">
-					</a>
-					<div class="popup-wrap">
-						<a href="#" class="btn-popup">앨범보기</a>
-					</div>
-				</div>
-				<div class="thumb-box">
-					<a href="#" class="thumb">
-						<img height="50" width="50" src="<%=request.getContextPath()%>/img//Lami/Lami with Daddy/home-part1/1597316726671.jpg" alt="Lami with Daddy">
-					</a>
-					<div class="popup-wrap">
-						<a href="#" class="btn-popup">앨범보기</a>
-					</div>
-				</div>
-				<div class="thumb-box">
-					<a href="#" class="thumb">
-						<img height="50" width="50" src="<%=request.getContextPath()%>/img//Lami/Lami with Daddy/home-part1/1597316726671.jpg" alt="Lami with Daddy">
-					</a>
-					<div class="popup-wrap">
-						<a href="#" class="btn-popup">앨범보기</a>
-					</div>
-				</div>		
-			</div>
-					<div class="rows">
-				<div class="thumb-box">
-					<a href="#" class="thumb">
-						<img height="50" width="50" src="<%=request.getContextPath()%>/img//Lami/Lami with Daddy/home-part1/1597316726671.jpg" alt="Lami with Daddy">
-					</a>
-					<div class="popup-wrap">
-						<a href="#" class="btn-popup">앨범보기</a>
-					</div>
-				</div>
-				<div class="thumb-box">
-					<a href="#" class="thumb">
-						<img height="50" width="50" src="<%=request.getContextPath()%>/img//Lami/Lami with Daddy/home-part1/1597316726671.jpg" alt="Lami with Daddy">
-					</a>
-					<div class="popup-wrap">
-						<a href="#" class="btn-popup">앨범보기</a>
-					</div>
-				</div>
-				<div class="thumb-box">
-					<a href="#" class="thumb">
-						<img height="50" width="50" src="<%=request.getContextPath()%>/img//Lami/Lami with Daddy/home-part1/1597316726671.jpg" alt="Lami with Daddy">
-					</a>
-					<div class="popup-wrap">
-						<a href="#" class="btn-popup">앨범보기</a>
-					</div>
-				</div>
-				<div class="thumb-box">
-					<a href="#" class="thumb">
-						<img height="50" width="50" src="<%=request.getContextPath()%>/img//Lami/Lami with Daddy/home-part1/1597316726671.jpg" alt="Lami with Daddy">
-					</a>
-					<div class="popup-wrap">
-						<a href="#" class="btn-popup">앨범보기</a>
-					</div>
-				</div>
-				<div class="thumb-box">
-					<a href="#" class="thumb">
-						<img height="50" width="50" src="<%=request.getContextPath()%>/img//Lami/Lami with Daddy/home-part1/1597316726671.jpg" alt="Lami with Daddy">
-					</a>
-					<div class="popup-wrap">
-						<a href="#" class="btn-popup">앨범보기</a>
-					</div>
-				</div>		
-			</div>
-					<div class="rows">
-				<div class="thumb-box">
-					<a href="#" class="thumb">
-						<img height="50" width="50" src="<%=request.getContextPath()%>/img//Lami/Lami with Daddy/home-part1/1597316726671.jpg" alt="Lami with Daddy">
-					</a>
-					<div class="popup-wrap">
-						<a href="#" class="btn-popup">앨범보기</a>
-					</div>
-				</div>
-				<div class="thumb-box">
-					<a href="#" class="thumb">
-						<img height="50" width="50" src="<%=request.getContextPath()%>/img//Lami/Lami with Daddy/home-part1/1597316726671.jpg" alt="Lami with Daddy">
-					</a>
-					<div class="popup-wrap">
-						<a href="#" class="btn-popup">앨범보기</a>
-					</div>
-				</div>
-				<div class="thumb-box">
-					<a href="#" class="thumb">
-						<img height="50" width="50" src="<%=request.getContextPath()%>/img//Lami/Lami with Daddy/home-part1/1597316726671.jpg" alt="Lami with Daddy">
-					</a>
-					<div class="popup-wrap">
-						<a href="#" class="btn-popup">앨범보기</a>
-					</div>
-				</div>
-				<div class="thumb-box">
-					<a href="#" class="thumb">
-						<img height="50" width="50" src="<%=request.getContextPath()%>/img//Lami/Lami with Daddy/home-part1/1597316726671.jpg" alt="Lami with Daddy">
-					</a>
-					<div class="popup-wrap">
-						<a href="#" class="btn-popup">앨범보기</a>
-					</div>
-				</div>
-				<div class="thumb-box">
-					<a href="#" class="thumb">
-						<img height="50" width="50" src="<%=request.getContextPath()%>/img//Lami/Lami with Daddy/home-part1/1597316726671.jpg" alt="Lami with Daddy">
-					</a>
-					<div class="popup-wrap">
-						<a href="#" class="btn-popup">앨범보기</a>
-					</div>
-				</div>		
-			</div>
+			</c:forEach>
 		</div>
 		<div class="prev-album">
 			<a href="javascript:;" class="btn-close"><i class="fas fa-times"></i></a>
 			<div class="prev-album-inner">
 				<div id="demo" class="carousel slide" data-ride="carousel">
-		
+				
 				  <!-- Indicators -->
 				  <ul class="carousel-indicators">
-				    <li data-target="#demo" data-slide-to="0" class="active"></li>
-				    <li data-target="#demo" data-slide-to="1"></li>
-				    <li data-target="#demo" data-slide-to="2"></li>
+				  	<c:forEach items="${list }" var="pro" varStatus="vs">
+				    	<li data-target="#demo" data-slide-to="${vs.index }" class="<c:if test="${vs.index == 0}"> active</c:if>"></li>
+			    	</c:forEach>
 				  </ul>
 					  
 				  <!-- The slideshow -->
 				  <div class="carousel-inner">
-				    <div class="carousel-item active">
-				      <img src="https://ssl.pstatic.net/tveta/libs/1382/1382031/c914827531ef16a941a0_20220318115506130.jpg" alt="angel" width="500" height="300">
-				    </div>
-				    <div class="carousel-item">
-				      <img src="https://ssl.pstatic.net/tveta/libs/1383/1383570/5724619ab3978a56b9bf_20220311170057661.jpg" alt="Pint with Daddy" width="500" height="300">
-				    </div>
-				    <div class="carousel-item">
-				      <img src="https://s.pstatic.net/shopping.phinf/20220311_16/2a4d956c-a049-45f0-b6b0-6bacdca3b824.jpg" alt="resemblences" width="500" height="300">
-				    </div>
+				  	<c:forEach items="${list }" var="pro" varStatus="vs">
+					    <div class="carousel-item <c:if test="${vs.index == 0}"> active</c:if>">
+					      <a href="<%=request.getContextPath()%>/product?pro_id=${pro.pro_id}"><img src="<%=request.getContextPath()%>/img${pro.pro_img}" alt="angel" width="500" height="300"></a>
+					    </div>
+			    	</c:forEach>
 				  </div>
 				  
 				  <!-- Left and right controls -->
@@ -261,13 +100,36 @@
 				</div>
 			</div>
 		</div>
+		<!-- ${list }  -->		
 		<script type="text/javascript">
-			$('.btn-popup').click(function(){
-				$('.prev-album').show();
+		
+			var cat_Path = '<%=request.getContextPath()%>';
+			//productService.setCategoryPath(categoryPath);
+			$(function(){
+				$(document).on('click', '.btn-album',function(){
+					var pro_id = '${product.pro_id}';
+					var main_image = {
+						pro_cat_id : pro_cat_id,
+						pro_name : pro_name,
+						pro_details : pro_details,
+						pro_img : pro_img
+					};
+					var albumUrl = '/album?pro_id=' + pro_id
+					//productService.select(albumUrl, albumSuccess);
+				});
+		
+		
+				$('.btn-popup').click(function(){
+					var index = $(this).data('target');
+					$('.carousel-indicators li').eq(index).click();
+					$('.prev-album').show();
+					
+				});
+				$('.prev-album .btn-close').click(function(){
+					$('.prev-album').hide();
+				});
 			});
-			$('.prev-album .btn-close').click(function(){
-				$('.prev-album').hide();
-			});
+
 		</script>
 	</body>
 </html>

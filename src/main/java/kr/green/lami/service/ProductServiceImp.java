@@ -1,5 +1,6 @@
 package kr.green.lami.service;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -45,6 +46,18 @@ public class ProductServiceImp implements ProductService {
 			productDao.insertImage(new ImageVO(filename,  productVo.getPro_id(), 1));
 		}
 		
+	}
+
+	@Override
+	public ArrayList<ProductVO> getProductList() {
+		return productDao.selectMainImage();
+	}
+
+	@Override
+	public ArrayList<ImageVO> getImageList(Integer pro_id) {
+		if(pro_id == null)
+			return null;
+		return productDao.productImages(pro_id);
 	}
 
 }

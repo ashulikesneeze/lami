@@ -1,6 +1,7 @@
 package kr.green.lami.controller;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -10,7 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,11 +22,9 @@ import kr.green.lami.service.CategoryService;
 import kr.green.lami.service.MemberService;
 import kr.green.lami.service.ProductService;
 import kr.green.lami.vo.CategoryVO;
+import kr.green.lami.vo.ImageVO;
 import kr.green.lami.vo.MemberVO;
-import kr.green.lami.vo.MiddleCategoryVO;
-import kr.green.lami.vo.Small2CategoryVO;
-import kr.green.lami.vo.Small3CategoryVO;
-import kr.green.lami.vo.SmallCategoryVO;
+import kr.green.lami.vo.ProductVO;
 
 @Controller
 public class HomeController {
@@ -41,6 +39,8 @@ public class HomeController {
 	@RequestMapping(value= "/")
 	public ModelAndView openTilesView(ModelAndView mv) throws Exception{
 	    mv.setViewName("/main/home");
+	    ArrayList<ProductVO> list = productService.getProductList();
+	    mv.addObject("list",list);
 	    //MemberVO user = memberService.test("ashu");
 	    //System.out.println(user);
 	    return mv;
@@ -162,5 +162,16 @@ public class HomeController {
 			}
 		}
 	}
+	
+	@RequestMapping(value= "/product", method=RequestMethod.GET)
+	public ModelAndView productGet(ModelAndView mv, Integer pro_id){
+	    ArrayList<ImageVO> list = productService.getImageList(pro_id);
+	    
+	    mv.addObject("list",list);
+	    //System.out.println(img);
+	    mv.setViewName("/product/product");
+	    return mv;
+	}
+	
 }
 

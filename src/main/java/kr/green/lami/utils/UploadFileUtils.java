@@ -9,11 +9,10 @@ import org.springframework.util.FileCopyUtils;
 
 public class UploadFileUtils {
 	
-	public static String uploadFile(String uploadPath, String originalName, byte[] 	
+	public static String uploadFile(String uploadPath,String savedPath, String originalName, byte[] 	
 			fileData)throws Exception{
 		UUID uid = UUID.randomUUID();
 		String savedName = uid.toString() +"_" + originalName;
-		String savedPath = calcPath(uploadPath);
 		File target = new File(uploadPath + savedPath, savedName);
 		FileCopyUtils.copy(fileData, target);
 		String uploadFileName = makeIcon(uploadPath, savedPath, savedName);

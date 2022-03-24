@@ -21,4 +21,25 @@
 	<select id="selectImage" resultType="kr.green.lami.vo.ImageVO">
 		select * from image where img_pro_id = #{pro_id} and img_name = #{img_name}
 	</select>
+	
+	<insert id="insertFile">
+		insert into file(fi_ori_name, fi_id, fi_co_qa_id, fi_table_name)
+		values(#{file.fi_ori_name}, #{file.fi_id}, #{file.fi_co_qa_id}, #{file.fi_table_name})
+	</insert>
+		
+	
+	<select id="selectMainImage" resultType="kr.green.lami.vo.ProductVO">
+		select product.*, concat(cat_path, '/',  img_name) as pro_img from product 
+		join image on pro_id = img_pro_id
+		join category on pro_cat_id = cat_id
+		where img_type = 0 group by pro_id limit 0,20;
+	</select>
+	
+	<select id="productImages" resultType="kr.green.lami.vo.ImageVO">
+		select image.*,concat(cat_path, '/',  img_name) as img_name2 from product 
+			join image on pro_id = img_pro_id 
+			join category on pro_cat_id = cat_id
+				where pro_id= #{pro_id}
+	</select>
+	
 </mapper>

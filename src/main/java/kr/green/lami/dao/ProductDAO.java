@@ -1,5 +1,7 @@
 package kr.green.lami.dao;
 
+import java.util.ArrayList;
+
 import org.apache.ibatis.annotations.Param;
 
 import kr.green.lami.vo.ImageVO;
@@ -17,5 +19,8 @@ public interface ProductDAO {
 
 	ImageVO selectImage(@Param("img_name")String filename, @Param("pro_id")int pro_id);
 
+	ArrayList<ProductVO> selectMainImage();
+
+	ArrayList<ImageVO> productImages(@Param("pro_id")Integer pro_id);
 
 }

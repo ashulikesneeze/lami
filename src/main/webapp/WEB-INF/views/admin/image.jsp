@@ -18,48 +18,14 @@
 		</div>
 		<div class="form-group">
 		  <label>내용</label>
-		  <textarea class="form-control" rows="10" name="pro_contents"></textarea>
+		  <textarea class="form-control" rows="10" name="pro_details"></textarea>
 		</div>
 		<div class="form-group">
 		  <label>첨부파일</label>
-		  <input type="file" class="form-control" name="files2">
-		  <input type="file" class="form-control" name="files2">
-		  <input type="file" class="form-control" name="files2">
-		  <input type="file" class="form-control" name="files2">
-		  <input type="file" class="form-control" name="files2">
-		  <input type="file" class="form-control" name="files2">
-		  <input type="file" class="form-control" name="files2">
-		  <input type="file" class="form-control" name="files2">
-		  <input type="file" class="form-control" name="files2">
-		  <input type="file" class="form-control" name="files2">
-		  <input type="file" class="form-control" name="files2">
-		  <input type="file" class="form-control" name="files2">
-		  <input type="file" class="form-control" name="files2">
-		  <input type="file" class="form-control" name="files2">
-		  <input type="file" class="form-control" name="files2">
-		  <input type="file" class="form-control" name="files2">
-		  <input type="file" class="form-control" name="files2">
-		  <input type="file" class="form-control" name="files2">
-		  <input type="file" class="form-control" name="files2">
-		  <input type="file" class="form-control" name="files2">
-		  <input type="file" class="form-control" name="files2">
-		  <input type="file" class="form-control" name="files2">
-		  <input type="file" class="form-control" name="files2">
-		  <input type="file" class="form-control" name="files2">
-		  <input type="file" class="form-control" name="files2">
-		  <input type="file" class="form-control" name="files2">
-		  <input type="file" class="form-control" name="files2">
-		  <input type="file" class="form-control" name="files2">
-		  <input type="file" class="form-control" name="files2">
-		  <input type="file" class="form-control" name="files2">
-		  <input type="file" class="form-control" name="files2">
-		  <input type="file" class="form-control" name="files2">
-		  <input type="file" class="form-control" name="files2">
-		  <input type="file" class="form-control" name="files2">
+		  <input type="file" class="form-control" name="files2" accept="video/*, image/*" multiple>
 		  <input type="file" class="form-control" name="files2">
 		</div>
 		<button class="btn btn-outline-success col-12">등록</button>
 	</form>
-	
 </body>
 </html>

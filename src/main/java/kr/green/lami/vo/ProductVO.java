@@ -19,6 +19,7 @@ public class ProductVO {
 	private Date pro_created_date;
 	private Date pro_modified_date;
 	private int pro_cat_id;
+	private String pro_img;
 	public ProductVO(String pro_details, String pro_name, int pro_cat_id) {
 		super();
 		this.pro_details = pro_details;
