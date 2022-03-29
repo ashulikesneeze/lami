@@ -137,6 +137,9 @@
 			<a class="menu-link" href="<%=request.getContextPath()%>/logout">로그아웃(logout)</a>
 			<a class="menu-link" href="<%=request.getContextPath()%>/mypage">마이페이지(mypage)</a>
 		</c:if>
+		<li class="nav-item">
+	        	<a class="menu-link" href="<%=request.getContextPath()%>/board/list">게시글(Q&A)</a>
+      	</li>
 	</div>
 </div>
 <div class="category-box">

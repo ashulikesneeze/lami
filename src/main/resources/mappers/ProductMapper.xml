@@ -29,10 +29,7 @@
 		
 	
 	<select id="selectMainImage" resultType="kr.green.lami.vo.ProductVO">
-		select product.*, concat(cat_path, '/',  img_name) as pro_img from product 
-		join image on pro_id = img_pro_id
-		join category on pro_cat_id = cat_id
-		where img_type = 0 group by pro_id limit 0,20;
+		select * from product limit 50,20;
 	</select>
 	
 	<select id="productImages" resultType="kr.green.lami.vo.ImageVO">

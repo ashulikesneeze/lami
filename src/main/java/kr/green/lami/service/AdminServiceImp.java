@@ -1,5 +1,6 @@
 package kr.green.lami.service;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +19,7 @@ public class AdminServiceImp implements AdminService {
 	@Autowired
 	AdminDAO adminDao;
 	
-	String uploadPath = "D:\\JAVA_ashu\\upload";
+	String uploadPath = "D:/pic/Send Anywhere (2022-02-07 14-30-36)";
 	
 		@Override
 		public void productRegister(ProductVO product, MemberVO user, List<MultipartFile> files2) {
@@ -45,19 +46,27 @@ public class AdminServiceImp implements AdminService {
 						String path = 
 							UploadFileUtils.uploadFile(
 								uploadPath, 
-								tmpFile.getOriginalFilename(), 
+								"D:/pic/Send Anywhere (2022-02-07 14-30-36)"+tmpFile.getOriginalFilename(), 
 								tmpFile.getBytes());
-						ImageVO image 
-							= new ImageVO(tmpFile.getOriginalFilename(),path,pro_id);
-						System.out.println(image);
-						adminDao.uploadImage(image);
+						String []img = {".tif", ".pjp", ".xbm", ".jxl", ".svgz", ".jpg", ".jpeg", ".ico", ".tiff", ".gif", ".svg", ".jfif", ".webp", ".png", ".bmp", ".pjpeg", ".avif"};
+						String []video = {".ogm", ".wmv", ".mpg", ".webm", ".ogv", ".mov", ".asx", ".mpeg", ".mp4", ".m4v", ".avi"};
+						
+						List<String> imgList = Arrays.asList(img);
+						List<String> videoList = Arrays.asList(video);
+						String ext = tmpFile.getOriginalFilename().substring(tmpFile.getOriginalFilename().lastIndexOf('.'));
+						
+						if(imgList.contains(ext)) {
+							System.out.println(0);
+							adminDao.uploadImage(new ImageVO(tmpFile.getOriginalFilename(),pro_id, 0));
+						}else if(videoList.contains(ext)) {
+							System.out.println(1);
+							adminDao.uploadImage(new ImageVO(tmpFile.getOriginalFilename(),pro_id, 1));
+						}
+						
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
 				}
 			}
 		}
-		
-	}
-
 }

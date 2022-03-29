@@ -35,7 +35,7 @@ public class AdminController {
 	@Autowired
 	AdminService adminService; 
 	
-	String uploadPath = "D:\\JAVA_ashu\\upload"; 
+	String uploadPath = "D:\\pic"; 
 	
 	@RequestMapping(value="/admin/image", method=RequestMethod.GET)
 	public ModelAndView productRegisterGet(ModelAndView mv) {	

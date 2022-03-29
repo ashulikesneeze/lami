@@ -55,7 +55,7 @@ public class BoardServiceImp implements BoardService {
 		
 		uploadFile(files, board.getQa_id(), "board"); 
 	}
-	
+
 	private void uploadFile(List<MultipartFile> files, int qa_id, String table_name) {
 		if(files == null || files.size() == 0)
 			return;

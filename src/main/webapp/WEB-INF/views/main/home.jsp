@@ -61,7 +61,7 @@
 			<c:forEach items="${list }" var="pro"  varStatus="vs">
 				<div class="thumb-box">
 					<a href="#" class="thumb">
-						<img src="<%=request.getContextPath()%>/img${pro.pro_img}" alt="Lami with Daddy">
+						<img src="<%=request.getContextPath()%>/img${pro.pro_main_img}" alt="Lami with Daddy">
 					</a>
 					<div class="popup-wrap">
 						<a href="#" class="btn-popup" data-target="${vs.index }">앨범보기</a>
@@ -85,7 +85,7 @@
 				  <div class="carousel-inner">
 				  	<c:forEach items="${list }" var="pro" varStatus="vs">
 					    <div class="carousel-item <c:if test="${vs.index == 0}"> active</c:if>">
-					      <a href="<%=request.getContextPath()%>/product?pro_id=${pro.pro_id}"><img src="<%=request.getContextPath()%>/img${pro.pro_img}" alt="angel" width="500" height="300"></a>
+					      <a href="<%=request.getContextPath()%>/product?pro_id=${pro.pro_id}"><img src="<%=request.getContextPath()%>/img${pro.pro_main_img}" alt="angel" width="500" height="300"></a>
 					    </div>
 			    	</c:forEach>
 				  </div>
@@ -112,7 +112,7 @@
 						pro_cat_id : pro_cat_id,
 						pro_name : pro_name,
 						pro_details : pro_details,
-						pro_img : pro_img
+						pro_main_img : pro_main_img
 					};
 					var albumUrl = '/album?pro_id=' + pro_id
 					//productService.select(albumUrl, albumSuccess);
