@@ -8,7 +8,6 @@
 <body>
 
 	<form method="post" action="<%=request.getContextPath()%>/admin/image" enctype="multipart/form-data">
-		<input type="hidden" name="qa_type" value="${board.qa_type }">
 		<c:if test="${product.pro_id != null }">
 			<input type="hidden" name="pro_id" value="${product.pro_id }">
 		</c:if>

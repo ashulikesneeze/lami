@@ -57,6 +57,38 @@
  	</style>
 </head>
 	<body>
+	
+	<div id="demo" class="carousel slide" data-ride="carousel">
+		
+			  <!-- Indicators -->
+			  <ul class="carousel-indicators">
+			    <li data-target="#demo" data-slide-to="0" class="active"></li>
+			    <li data-target="#demo" data-slide-to="1"></li>
+			    <li data-target="#demo" data-slide-to="2"></li>
+			  </ul>
+				  
+			  <!-- The slideshow -->
+			  <div class="carousel-inner">
+			    <div class="carousel-item active">
+			      <img src="<%=request.getContextPath()%>/img/Lami/Daycare/2022.3/video_high_20220304162243397[Trim].mp4" alt="angel" width="500" height="300">
+			    </div>
+			    <div class="carousel-item">
+			      <img src="<%=request.getContextPath()%>/img/Lami/play play play/20210902_193610.mp4" alt="Pint with Daddy" width="500" height="300">
+			    </div>
+			    <div class="carousel-item">
+			      <img src="<%=request.getContextPath()%>/img/Lami/funny you/kakaotalk_1625397210834.mp4" alt="resemblences" width="500" height="300">
+			    </div>
+			  </div>
+			  
+			  <!-- Left and right controls -->
+			  <a class="carousel-control-prev" href="#demo" data-slide="prev">
+			    <span class="carousel-control-prev-icon"></span>
+			  </a>
+			  <a class="carousel-control-next" href="#demo" data-slide="next">
+			    <span class="carousel-control-next-icon"></span>
+			  </a>
+		</div>
+		
 		<div class="album">
 			<c:forEach items="${list }" var="pro"  varStatus="vs">
 				<div class="thumb-box">
@@ -69,37 +101,7 @@
 				</div>
 			</c:forEach>
 		</div>
-		<div class="prev-album">
-			<a href="javascript:;" class="btn-close"><i class="fas fa-times"></i></a>
-			<div class="prev-album-inner">
-				<div id="demo" class="carousel slide" data-ride="carousel">
-				
-				  <!-- Indicators -->
-				  <ul class="carousel-indicators">
-				  	<c:forEach items="${list }" var="pro" varStatus="vs">
-				    	<li data-target="#demo" data-slide-to="${vs.index }" class="<c:if test="${vs.index == 0}"> active</c:if>"></li>
-			    	</c:forEach>
-				  </ul>
-					  
-				  <!-- The slideshow -->
-				  <div class="carousel-inner">
-				  	<c:forEach items="${list }" var="pro" varStatus="vs">
-					    <div class="carousel-item <c:if test="${vs.index == 0}"> active</c:if>">
-					      <a href="<%=request.getContextPath()%>/product?pro_id=${pro.pro_id}"><img src="<%=request.getContextPath()%>/img${pro.pro_main_img}" alt="angel" width="500" height="300"></a>
-					    </div>
-			    	</c:forEach>
-				  </div>
-				  
-				  <!-- Left and right controls -->
-				  <a class="carousel-control-prev" href="#demo" data-slide="prev">
-				    <span class="carousel-control-prev-icon"></span>
-				  </a>
-				  <a class="carousel-control-next" href="#demo" data-slide="next">
-				    <span class="carousel-control-next-icon"></span>
-				  </a>
-				</div>
-			</div>
-		</div>
+		
 		<!-- ${list }  -->		
 		<script type="text/javascript">
 		

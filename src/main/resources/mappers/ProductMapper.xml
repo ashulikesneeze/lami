@@ -22,12 +22,6 @@
 		select * from image where img_pro_id = #{pro_id} and img_name = #{img_name}
 	</select>
 	
-	<insert id="insertFile">
-		insert into file(fi_ori_name, fi_id, fi_co_qa_id, fi_table_name)
-		values(#{file.fi_ori_name}, #{file.fi_id}, #{file.fi_co_qa_id}, #{file.fi_table_name})
-	</insert>
-		
-	
 	<select id="selectMainImage" resultType="kr.green.lami.vo.ProductVO">
 		select * from product limit 50,20;
 	</select>

@@ -128,7 +128,7 @@
 <body>
 <div class="menu-box">
 	<div class="menu">
-		<button class="btn-category"><input class="burger-check" type="checkbox" id="burger-check" /><label class="burger-icon" for="burger-check"><span class="burger-sticks"></span>전체 카테고리</label></button>
+		<button class="btn-category"><input class="burger-check" type="checkbox" id="burger-check" /><label class="burger-icon" for="burger-check"><span class="burger-sticks"></span>전체 카테고리 All</label></button>
 		<c:if test="${user == null }">
 			<a class="menu-link" href="<%=request.getContextPath()%>/login">로그인(login)</a>
 			<a class="menu-link" href="<%=request.getContextPath()%>/signup">회원가입(signup)</a>

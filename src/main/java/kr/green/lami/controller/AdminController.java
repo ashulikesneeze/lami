@@ -35,7 +35,7 @@ public class AdminController {
 	@Autowired
 	AdminService adminService; 
 	
-	String uploadPath = "D:\\pic"; 
+	String uploadPath = "D:/pic/Send Anywhere (2022-02-07 14-30-36)"; 
 	
 	@RequestMapping(value="/admin/image", method=RequestMethod.GET)
 	public ModelAndView productRegisterGet(ModelAndView mv) {	
