@@ -9,6 +9,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import kr.green.lami.dao.AdminDAO;
 import kr.green.lami.utils.UploadFileUtils;
+import kr.green.lami.vo.CategoryVO;
 import kr.green.lami.vo.ImageVO;
 import kr.green.lami.vo.MemberVO;
 import kr.green.lami.vo.ProductVO;
@@ -46,7 +47,7 @@ public class AdminServiceImp implements AdminService {
 						String path = 
 							UploadFileUtils.uploadFile(
 								uploadPath, 
-								"D:/pic/Send Anywhere (2022-02-07 14-30-36)"+tmpFile.getOriginalFilename(), 
+								"cat_path"+tmpFile.getOriginalFilename(), 
 								tmpFile.getBytes());
 						String []img = {".tif", ".pjp", ".xbm", ".jxl", ".svgz", ".jpg", ".jpeg", ".ico", ".tiff", ".gif", ".svg", ".jfif", ".webp", ".png", ".bmp", ".pjpeg", ".avif"};
 						String []video = {".ogm", ".wmv", ".mpg", ".webm", ".ogv", ".mov", ".asx", ".mpeg", ".mp4", ".m4v", ".avi"};
@@ -68,5 +69,10 @@ public class AdminServiceImp implements AdminService {
 					}
 				}
 			}
+		}
+
+		@Override
+		public List<CategoryVO> getCategories() {
+			return adminDao.getCategories();	
 		}
 }

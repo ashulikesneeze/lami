@@ -3,6 +3,7 @@ package kr.green.lami.controller;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -22,6 +23,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import kr.green.lami.service.AdminService;
 import kr.green.lami.service.MemberService;
+import kr.green.lami.vo.CategoryVO;
 import kr.green.lami.vo.MemberVO;
 import kr.green.lami.vo.ProductVO;
 
@@ -39,6 +41,12 @@ public class AdminController {
 	
 	@RequestMapping(value="/admin/image", method=RequestMethod.GET)
 	public ModelAndView productRegisterGet(ModelAndView mv) {	
+		List<CategoryVO> categories = adminService.getCategories();
+		for (CategoryVO category : categories) {
+			System.out.println(category);
+		}
+		mv.addObject("categories", categories);
+
 		mv.setViewName("/admin/image");
 		return mv;
 	}
@@ -47,9 +55,10 @@ public class AdminController {
 	public ModelAndView productRegisterPost(ModelAndView mv, ProductVO product,
 			HttpServletRequest request, List<MultipartFile> files2) {
 		MemberVO user = (MemberVO)request.getSession().getAttribute("user");
+
 		System.out.println(product);
-		adminService.productRegister(product, user,  files2);
-		mv.setViewName("/admin/image");
+		//adminService.productRegister(product, user,  files2);
+		//mv.setViewName("/admin/image");
 		return mv;
 	}
 	

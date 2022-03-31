@@ -17,5 +17,14 @@
 		insert into image(img_id, img_name, img_pro_id, img_type)
 		values(#{image.img_id,}, #{image.img_name}, #{image.img_pro_id}, #{image.img_type})
 	</insert>
+	
+	<select id="getCategories" resultType="kr.green.lami.vo.CategoryVO">
+		SELECT  cat_id, 
+				cat_name, 
+				cat_ori_num,
+				cat_depth, 
+				cat_path
+		FROM category
+	</select>
 
 </mapper>

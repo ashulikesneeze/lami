@@ -16,6 +16,16 @@
 		  <input type="text" class="form-control" name="pro_name">
 		</div>
 		<div class="form-group">
+		  <label>카테고리</label>
+		  <select type="text" class="form-control" name="cat_id">
+			  <c:forEach var="category" items="${categories}">
+			  
+			  	<option value="${category.cat_id}">${category.cat_name}</option>
+			  </c:forEach>
+		  </select>
+		
+		</div>
+		<div class="form-group">
 		  <label>내용</label>
 		  <textarea class="form-control" rows="10" name="pro_details"></textarea>
 		</div>
