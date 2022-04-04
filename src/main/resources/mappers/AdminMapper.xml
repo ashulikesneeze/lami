@@ -19,12 +19,7 @@
 	</insert>
 	
 	<select id="getCategories" resultType="kr.green.lami.vo.CategoryVO">
-		SELECT  cat_id, 
-				cat_name, 
-				cat_ori_num,
-				cat_depth, 
-				cat_path
-		FROM category
+		SELECT * FROM category
 	</select>
 
 </mapper>

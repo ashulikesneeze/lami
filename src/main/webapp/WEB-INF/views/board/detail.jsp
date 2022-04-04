@@ -10,56 +10,56 @@
 <script src="<%=request.getContextPath() %>/resources/js/answer.js"></script>
 </head>
 <body>
-		<h1>${board.typeTitle} Details </h1>
-	<div class="form-group">
-	  <label>Title</label>
-	  <input type="text" class="form-control" value="${board.qa_title}" readonly>
-	</div>
-	<div class="form-group">
-	  <label>Author</label>
-	  <input type="text" class="form-control" value="${board.qa_me_id}" readonly>
-	</div>
-	<div class="form-group">
-	  <label>Date</label>
-	  <input type="text" class="form-control" value="${board.qa_created_date_str}" readonly>
-	</div>
-	<div class="form-group">
-	  <label>Contents</label>
-	  <div class="form-control" style="height: auto; min-height: 400px">${board.qa_contents}</div>
-	</div>
-	<div class="form-group">
-		<label>attachment files</label>
-		  <c:forEach items="${fileList}" var="file">
-		  	<a class="form-control" href="<%=request.getContextPath()%>/board/download?fileName=${file.fi_name}">${file.fi_ori_name}</a>
-		  </c:forEach>
-	  </div>
-	  <c:if test="${user.me_id == board.qa_me_id }">
-		<a href="<%=request.getContextPath()%>/board/modify?qa_id=${board.qa_id}">
-			<button class="btn btn-outline-success">수정 modify</button>
-		</a>
-		<a href="<%=request.getContextPath()%>/board/delete?qa_id=${board.qa_id}">
-			<button class="btn btn-outline-success">삭제 delete</button>
-		</a>
-	</c:if>
-	<!-- 현재 보고 있는 게시글이 원본 게시글 -->
-	<c:if test="${board.qa_id == board.qa_ori_id && (board.qa_type == 'general')}">
-		<a href="<%=request.getContextPath()%>/board/register?qa_ori_id=${board.qa_id}">
-			<button class="btn btn-outline-success">답변 answer</button>
-		</a>
-	</c:if>
-	
-	<div class="answer-list">	
-	</div>
-	
-	<div class="answer-pagination">	
-	</div>
-	
-	<div class="input-group mb-3 mt-3">
-	  <textarea class="form-control co_contents" rows="3"></textarea>
-	  <div class="input-group-append">
-	    <button class="btn btn-success btn-answer-insert">submit 등록</button>
-	  </div>
-	</div>
+	<h1>${board.typeTitle} Details </h1>
+		<div class="form-group">
+		  <label>Title</label>
+		  <input type="text" class="form-control" value="${board.qa_title}" readonly>
+		</div>
+		<div class="form-group">
+		  <label>Author</label>
+		  <input type="text" class="form-control" value="${board.qa_me_id}" readonly>
+		</div>
+		<div class="form-group">
+		  <label>Date</label>
+		  <input type="text" class="form-control" value="${board.qa_created_date_str}" readonly>
+		</div>
+		<div class="form-group">
+		  <label>Contents</label>
+		  <div class="form-control" style="height: auto; min-height: 400px">${board.qa_contents}</div>
+		</div>
+		<div class="form-group">
+			<label>attachment files</label>
+			  <c:forEach items="${fileList}" var="file">
+			  	<a class="form-control" href="<%=request.getContextPath()%>/board/download?fileName=${file.fi_name}">${file.fi_ori_name}</a>
+			  </c:forEach>
+		  </div>
+		  <c:if test="${user.me_id == board.qa_me_id }">
+			<a href="<%=request.getContextPath()%>/board/modify?qa_id=${board.qa_id}">
+				<button class="btn btn-outline-success">수정 modify</button>
+			</a>
+			<a href="<%=request.getContextPath()%>/board/delete?qa_id=${board.qa_id}">
+				<button class="btn btn-outline-success">삭제 delete</button>
+			</a>
+		</c:if>
+		<!-- 현재 보고 있는 게시글이 원본 게시글 -->
+		<c:if test="${board.qa_id == board.qa_ori_id && (board.qa_type == 'general')}">
+			<a href="<%=request.getContextPath()%>/board/register?qa_ori_id=${board.qa_id}">
+				<button class="btn btn-outline-success">답변 answer</button>
+			</a>
+		</c:if>
+		
+		<div class="answer-list">	
+		</div>
+		
+		<div class="answer-pagination">	
+		</div>
+		
+		<div class="input-group mb-3 mt-3">
+		  <textarea class="form-control co_contents" rows="3"></textarea>
+		  <div class="input-group-append">
+		    <button class="btn btn-success btn-answer-insert">submit 등록</button>
+		  </div>
+		</div>
 	
 		
 	<script type="text/javascript">

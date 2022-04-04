@@ -42,11 +42,7 @@ public class AdminController {
 	@RequestMapping(value="/admin/image", method=RequestMethod.GET)
 	public ModelAndView productRegisterGet(ModelAndView mv) {	
 		List<CategoryVO> categories = adminService.getCategories();
-		for (CategoryVO category : categories) {
-			System.out.println(category);
-		}
 		mv.addObject("categories", categories);
-
 		mv.setViewName("/admin/image");
 		return mv;
 	}
@@ -55,7 +51,6 @@ public class AdminController {
 	public ModelAndView productRegisterPost(ModelAndView mv, ProductVO product,
 			HttpServletRequest request, List<MultipartFile> files2) {
 		MemberVO user = (MemberVO)request.getSession().getAttribute("user");
-
 		System.out.println(product);
 		//adminService.productRegister(product, user,  files2);
 		//mv.setViewName("/admin/image");
