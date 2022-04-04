@@ -21,5 +21,9 @@
 	<select id="getCategories" resultType="kr.green.lami.vo.CategoryVO">
 		SELECT * FROM category
 	</select>
+	
+	<select id="getCategoryPath" parameterType="int" resultType="String">
+		SELECT cat_path FROM CATEGORY WHERE cat_id = #{cat_id}
+	</select>
 
 </mapper>

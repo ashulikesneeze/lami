@@ -50,10 +50,10 @@ public class AdminController {
 	@RequestMapping(value="/admin/image", method=RequestMethod.POST)
 	public ModelAndView productRegisterPost(ModelAndView mv, ProductVO product,
 			HttpServletRequest request, List<MultipartFile> files2) {
-		MemberVO user = (MemberVO)request.getSession().getAttribute("user");
-		System.out.println(product);
-		//adminService.productRegister(product, user,  files2);
-		//mv.setViewName("/admin/image");
+		MemberVO user = (MemberVO) request.getSession().getAttribute("user");
+		System.out.println(user == null);
+		adminService.productRegister(product, user,  files2);
+		mv.setViewName("/admin/image");
 		return mv;
 	}
 	
