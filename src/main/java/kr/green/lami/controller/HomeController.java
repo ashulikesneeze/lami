@@ -15,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -172,6 +173,13 @@ public class HomeController {
 	    mv.setViewName("/product/product");
 	    return mv;
 	}
-	
+	@ResponseBody
+	@RequestMapping(value= "/album", method=RequestMethod.GET)
+	public ArrayList<ImageVO> albumGet(ModelAndView mv,@RequestParam Integer pro_id){
+	    ArrayList<ImageVO> list = productService.getImageList(pro_id);
+	    
+	    System.out.println(pro_id);
+	    return list;
+	}
 }
 
