@@ -25,47 +25,41 @@ public class AdminServiceImp implements AdminService {
 	@Override
 	public void productRegister(ProductVO product, MemberVO user, List<MultipartFile> files2) {
 		
-		
 		if(product == null || user == null) {
-			System.out.println("#1 productRegister ");
-
+			//System.out.println("1");
 			return;			
 		}
 
 		if(product.getPro_name() == null
-				|| product.getPro_name().trim().length() ==0) { // product.getPro_name().length() == 0
-			System.out.println("#2 productRegister ");
+				|| product.getPro_name().trim().length() ==0) {
+			//System.out.println("2");
 			return;
 		}
 			
 		if(user.getMe_id() == null || user.getMe_id().trim().length() == 0) {
-			System.out.println("#3 productRegister ");
-
+			//System.out.println("3");
 			return; 
 		}
 		
 		
 		String uploadCategoryPath = adminDao.getCategoryPath(product.getPro_cat_id());
-		System.out.println("# uploadCategoryPath " + uploadCategoryPath);
+		System.out.println("uploadCategoryPath " + uploadCategoryPath);
 			
 		adminDao.productRegister(product);
 		// 해당 카테고리 객체를 가져온다.
 		
-		uploadImage(files2, product.getPro_id(), uploadCategoryPath); 
+		uploadImage(files2, product.getPro_id(), uploadCategoryPath,"/"+product.getPro_name()); 
 	}
 
-	private void uploadImage(List<MultipartFile> files2, int pro_id, String uploadCategoryPath) {
-		System.out.println("## 1"); 
+	private void uploadImage(List<MultipartFile> files2, int pro_id, String uploadCategoryPath, String path2) {
 		if(files2 == null || files2.size() == 0)
 			return;
 		for(MultipartFile tmpFile : files2) {
-			System.out.println("## 2");
 			if(tmpFile != null && tmpFile.getOriginalFilename().length() != 0) {
 				try {
-					System.out.println("## 3");
 					String path = 
 						UploadFileUtils.uploadFile(
-							uploadPath + uploadCategoryPath + "/", 
+							uploadPath + uploadCategoryPath, path2+ "/", 
 							tmpFile.getOriginalFilename(), 
 							tmpFile.getBytes());
 					String []img = {".tif", ".pjp", ".xbm", ".jxl", ".svgz", ".jpg", ".jpeg", ".ico", ".tiff", ".gif", ".svg", ".jfif", ".webp", ".png", ".bmp", ".pjpeg", ".avif"};

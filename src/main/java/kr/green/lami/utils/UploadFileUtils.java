@@ -10,15 +10,15 @@ import org.springframework.util.FileCopyUtils;
 public class UploadFileUtils {
 	
 	public static String uploadFile(String uploadPath, 
-			String savedPath,
+			String savedPath,String filename,
 			byte[] fileData) throws Exception {
-		UUID uid = UUID.randomUUID();
-		String savedName = uid.toString() +"_" + uploadPath;
+
 		System.out.println("uploadPath + savedPath = " + uploadPath + savedPath);
 		//File target = new File(uploadPath + savedPath, savedName);
-		File target = new File(uploadPath , savedPath);
+		makeDir(uploadPath, savedPath);
+		File target = new File(uploadPath +savedPath, filename);
 		FileCopyUtils.copy(fileData, target);
-		String uploadFileName = makeIcon(uploadPath, savedPath, savedName);
+		String uploadFileName = makeIcon(uploadPath, savedPath, filename);
 		return uploadFileName;
 	}
 	

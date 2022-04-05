@@ -14,5 +14,5 @@ public interface AdminDAO {
 	void productRegister(@Param("product")ProductVO product);
 	void uploadImage(@Param("image")ImageVO image);
 	List<CategoryVO> getCategories();
-	String getCategoryPath(int cat_id);
+	String getCategoryPath(@Param("cat_id")int cat_id);
 }
