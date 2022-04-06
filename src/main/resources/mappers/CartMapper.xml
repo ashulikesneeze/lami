@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.green.lami.dao.CartDAO">
+
+	<insert id="save" parameterType="kr.green.lami.vo.CartDTO">
+		insert into cart(ca_me_id, ca_pro_id)
+		values(#{cart.ca_me_id}, #{cart.ca_pro_id})
+	</insert>
+	
+	<select id="findAll" parameterType="int" resultType="kr.green.lami.vo.CartVO">
+		SELECT ca_id, 
+			ca_me_id, 
+			ca_pro_id 
+		FROM cart 
+		WHERE ca_me_id = #{me_id}
+	</select>
+	
+</mapper>

@@ -173,6 +173,7 @@ public class HomeController {
 	    mv.setViewName("/product/product");
 	    return mv;
 	}
+	
 	@ResponseBody
 	@RequestMapping(value= "/album", method=RequestMethod.GET)
 	public ArrayList<ImageVO> albumGet(ModelAndView mv,@RequestParam Integer pro_id){
