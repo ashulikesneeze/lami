@@ -78,7 +78,8 @@
 			  </div>
 		  	</c:forEach>
 			<div class="popup-wrap">
-				<a href="#" class="btn-popup" data-target="${vs.index }">앨범보기</a>
+				<button id="cartButton">장바구니</button>
+				<!--<a href="#" class="btn-popup" data-target="${pro.pro_id}">앨범보기</a>  -->
 			</div>
 		</div>
 		
