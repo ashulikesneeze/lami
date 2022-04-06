@@ -140,12 +140,14 @@
 							for(i = 0; i<res.length; i++){
 								//console.log(res[i]);
 								str += '<div class="carousel-item'+ (i == 1 ? ' active': '')+'">'
-							      +'<img src="<%=request.getContextPath()%>/img'+res[i].img_name2+'" alt="angel" width="500" height="300">'
+							      +'<img src="<%=request.getContextPath()%>/img'+res[i].img_name2+'" alt="angel" width="100%" height="100%">'
 							    +'</div>'
 							    str2+='<li data-target="#demo" data-slide-to="'+i+'" class="'+ (i == 0 ? 'active': '')+'"></li>'
 							}
 							$('#demo .carousel-inner').html(str);
 							$('#demo .carousel-indicators').html(str2);
+						}, error : function(error) {
+							console.log(error);
 						}
 					});
 					$('.prev-album').show();
