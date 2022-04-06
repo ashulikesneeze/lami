@@ -88,4 +88,21 @@ public class AdminServiceImp implements AdminService {
 	public List<CategoryVO> getCategories() {
 		return adminDao.getCategories();	
 	}
+
+	@Override
+	public CategoryVO getCategory(int pro_cat_id) {
+		// TODO Auto-generated method stub
+		return adminDao.getCategory(pro_cat_id);
+	}
+
+	@Override
+	public void addCategory(String categoryName, CategoryVO category) {
+		int categoryOriginalNumber = category.getCat_ori_num();
+		int categoryDepth = category.getCat_depth() + 1;
+		String categoryPath = category.getCat_path() + "/" + categoryName;
+		System.out.println("service : categoryOriginalNumber " + categoryOriginalNumber);
+		System.out.println("service : categoryDepth " + categoryDepth);
+		System.out.println("service : categoryPath " + categoryPath);
+		adminDao.addCategory(categoryName, categoryOriginalNumber, categoryDepth, categoryPath);
+	}
 }

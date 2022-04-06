@@ -51,6 +51,16 @@ public class AdminController {
 	public ModelAndView productRegisterPost(ModelAndView mv, ProductVO product,
 			HttpServletRequest request, List<MultipartFile> files2) {
 		MemberVO user = (MemberVO) request.getSession().getAttribute("user");
+		CategoryVO category = adminService.getCategory(product.getPro_cat_id());
+		System.out.println("# 카테고리 : " + category);
+		String categoryName = product.getPro_name();
+		/*
+		product.getPro_name();
+		category.getCat_ori_num();
+		category.getCat_depth() + 1;
+		category.getCat_path() + "/" + product.getPro_name();
+		*/
+		adminService.addCategory(categoryName, category);
 		//System.out.println(product);
 		adminService.productRegister(product, user,  files2);
 		mv.setViewName("/admin/image");

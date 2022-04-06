@@ -57,6 +57,44 @@
  	</style>
 </head>
 	<body>
+	
+		<div id="demo" class="carousel slide" data-ride="carousel">
+		  <!-- Indicators -->
+		  <ul class="carousel-indicators">
+		    <li data-target="#demo" data-slide-to="0" class="active"></li>
+		    <li data-target="#demo" data-slide-to="1"></li>
+		    <li data-target="#demo" data-slide-to="2"></li>
+		  </ul>
+		
+		  <!-- The slideshow -->
+		  <div class="carousel-inner">
+		    <div class="carousel-item active">
+	     	 <video width="100%" height="100%" controls>
+				<source src="<%=request.getContextPath()%>/Lami/Daycare/2022.3/video_high_20220304162243397[Trim].mp4" type="video/mp4">
+			 </video>
+		    </div>
+		    <div class="carousel-item">
+		      <video width="100%" height="100%" controls>
+				<source src="<%=request.getContextPath()%>/img${image.img_name2}" type="video/mp4">
+			 </video>
+		    </div>
+		    <div class="carousel-item">
+		      <video width="100%" height="100%" controls>
+				<source src="<%=request.getContextPath()%>/img${image.img_name2}" type="video/mp4">
+			 </video>
+		    </div>
+		  </div>
+		
+		  <!-- Left and right controls -->
+		  <a class="carousel-control-prev" href="#demo" data-slide="prev">
+		    <span class="carousel-control-prev-icon"></span>
+		  </a>
+		  <a class="carousel-control-next" href="#demo" data-slide="next">
+		    <span class="carousel-control-next-icon"></span>
+		  </a>
+		</div>
+		
+		
 		<div class="album">
 			<div class="rows">
 				<div class="thumb-box">
@@ -90,6 +128,7 @@
 				</div>
 			</div>
 		</div>
+		
 		<div class="album">
 			<c:forEach items="${list }" var="pro"  varStatus="vs">
 				<div class="thumb-box">

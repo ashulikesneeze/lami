@@ -4,9 +4,9 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.green.lami.dao.CartDAO">
 
-	<insert id="save" parameterType="kr.green.lami.vo.CartDTO">
+	<insert id="save" parameterType="kr.green.lami.vo.CartVO">
 		insert into cart(ca_me_id, ca_pro_id)
-		values(#{cart.ca_me_id}, #{cart.ca_pro_id})
+		values(#{ca_me_id}, #{ca_pro_id})
 	</insert>
 	
 	<select id="findAll" parameterType="int" resultType="kr.green.lami.vo.CartVO">

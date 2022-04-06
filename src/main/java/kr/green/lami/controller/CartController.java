@@ -10,27 +10,34 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.green.lami.service.CartService;
+import kr.green.lami.service.ProductService;
 import kr.green.lami.vo.CartDTO;
 import kr.green.lami.vo.CartVO;
+import kr.green.lami.vo.ProductVO;
 
 @Controller
 public class CartController {
 	
-	private final CartService cartService;
+	@Autowired
+	CartService cartService;
 	
-	public CartController(CartService cartService) {
-		this.cartService = cartService;
-	}
+	@Autowired
+	ProductService productService;
+
 	
-	@PostMapping("/cart")
+	@GetMapping("/cart")
 	@ResponseBody
-	public int save(@RequestBody CartDTO cartDTO) {
+	public int save(@RequestParam("pro_id") Integer pro_id) {
+		System.out.println("# cartid = " + pro_id);
 		
-		int count = cartService.save(cartDTO);
+		ProductVO product = productService.getProduct(pro_id);
+	
+		int count = cartService.save(product);
 		if (count <= 0) {
 			throw new IllegalArgumentException("cartDTO 정보가 잘못되었습니다.");
 		}

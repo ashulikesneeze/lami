@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.green.lami.service.AdminService;
 import kr.green.lami.service.CategoryService;
 import kr.green.lami.service.MemberService;
 import kr.green.lami.service.ProductService;
@@ -36,6 +37,8 @@ public class HomeController {
 	CategoryService categoryService;
 	@Autowired
 	ProductService productService;
+	@Autowired
+	AdminService adminService;
 	
 	@RequestMapping(value= "/")
 	public ModelAndView openTilesView(ModelAndView mv) throws Exception{
@@ -167,8 +170,12 @@ public class HomeController {
 	@RequestMapping(value= "/product", method=RequestMethod.GET)
 	public ModelAndView productGet(ModelAndView mv, Integer pro_id){
 	    ArrayList<ImageVO> list = productService.getImageList(pro_id);
+	    ProductVO product = productService.getProduct(pro_id);
+	    CategoryVO category = adminService.getCategory(product.getPro_cat_id());
 	    
 	    mv.addObject("list",list);
+	    mv.addObject("product",product);
+	    mv.addObject("category",category);
 	    //System.out.println(img);
 	    mv.setViewName("/product/product");
 	    return mv;

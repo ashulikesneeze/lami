@@ -14,4 +14,8 @@ public interface AdminService {
 
 	List<CategoryVO> getCategories();
 
+	CategoryVO getCategory(int pro_cat_id);
+
+	void addCategory(String categoryName, CategoryVO category);
+
 }

@@ -7,7 +7,7 @@ import kr.green.lami.vo.CartVO;
 
 public interface CartDAO {
 
-	int save(CartDTO cartDTO);
+	int save(CartVO cart);
 
 	List<CartVO> findAll(int me_id);
 }

@@ -25,5 +25,16 @@
 	<select id="getCategoryPath" parameterType="int" resultType="String">
 		SELECT cat_path FROM CATEGORY WHERE cat_id = #{cat_id}
 	</select>
+	
+	<select id="getCategory" parameterType="int" resultType="kr.green.lami.vo.CategoryVO">
+		SELECT cat_id, cat_name, cat_ori_num, cat_depth, cat_path
+		 FROM CATEGORY 
+		 WHERE cat_id = #{pro_cat_id}
+	</select>
+	
+	<insert id = "addCategory">
+		insert into category (cat_name, cat_ori_num, cat_depth, cat_path)
+		values(#{categoryName}, #{categoryOriginalNumber}, #{categoryDepth}, #{categoryPath})
+	</insert>
 
 </mapper>

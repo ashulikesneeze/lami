@@ -15,4 +15,7 @@ public interface AdminDAO {
 	void uploadImage(@Param("image")ImageVO image);
 	List<CategoryVO> getCategories();
 	String getCategoryPath(@Param("cat_id")int cat_id);
+	CategoryVO getCategory(int pro_cat_id);
+	void addCategory(@Param("categoryName")String categoryName, @Param("categoryOriginalNumber")int categoryOriginalNumber, 
+			@Param("categoryDepth")int categoryDepth, @Param("categoryPath")String categoryPath);
 }

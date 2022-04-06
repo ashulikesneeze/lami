@@ -12,7 +12,8 @@
  	<script src="<%=request.getContextPath() %>/resources/js/product.js"></script>
  	<style>
  		.album{
-			width : 1200px; margin: 0 auto;
+			/* width : 1200px; margin: 0 auto; */
+			width : 1200px; height: 1200px;
  		}
  		
  		.thumb-box{
@@ -50,7 +51,7 @@
 	<body>
 		<div class="form-group">
 		  <label>Categories</label>
-		  <input type="text" class="form-control" value="${category.cat_path}" readonly>
+		  <input type="text" class="form-control" value="${category.cat_name}" readonly>
 		</div>
 		<div class="form-group">
 		  <label>Album Name</label>
@@ -75,12 +76,16 @@
 					</video>
 			    </c:if>
 			  	</a>
+			  	<div class="popup-wrap">
+					<button id="cartButton" data-target="${image.img_pro_id}">장바구니담기</button>
+					<!--<a href="#" class="btn-popup" data-target="${pro.pro_id}">앨범보기</a>  -->
+				</div>
 			  </div>
 		  	</c:forEach>
-			<div class="popup-wrap">
+			<!--  <div class="popup-wrap">
 				<button id="cartButton">장바구니</button>
-				<!--<a href="#" class="btn-popup" data-target="${pro.pro_id}">앨범보기</a>  -->
-			</div>
+				<a href="#" class="btn-popup" data-target="${pro.pro_id}">앨범보기</a> 
+			</div>  -->
 		</div>
 		
 		<div id="demo" class="carousel slide carousel-fade" data-ride="carousel">
@@ -111,6 +116,28 @@
 			var cat_Path = '<%=request.getContextPath()%>';
 			//productService.setCategoryPath(categoryPath);
 			$(function(){
+				console.log("# start");
+				$(document).on('click', '#cartButton', function() {
+					console.log('cartButton');
+					var pro_id = $(this).data("target");
+					var data = {'pro_id' : pro_id};
+					console.log(data);
+					$.ajax({
+						async:false,
+						type:'get',
+						url: '<%=request.getContextPath()%>/cart?pro_id=' + pro_id,
+						data : pro_id,
+						contentType:'application/json; charset=UTF-8',
+						dataType:"json",
+						success : function(res){
+							console.log('res = '+ res);
+							alert('SUCCESS');
+						}, error : function(error) {
+							console.log(error);
+						}
+					});
+				});
+				
 				$(document).on('click', '.btn-album',function(){
 					var pro_id = '${product.pro_id}';
 					var main_image = {

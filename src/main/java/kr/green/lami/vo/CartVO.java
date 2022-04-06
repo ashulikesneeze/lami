@@ -8,6 +8,6 @@ import lombok.NoArgsConstructor;
 public class CartVO {
 	
 	private int ca_id;
-	private String pro_name;
-	private int cat_id;
+	private String ca_me_id;
+	private int ca_pro_id;
 }

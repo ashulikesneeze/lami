@@ -60,4 +60,10 @@ public class ProductServiceImp implements ProductService {
 		return productDao.productImages(pro_id);
 	}
 
+	@Override
+	public ProductVO getProduct(Integer pro_id) {
+		// TODO Auto-generated method stub
+		return productDao.getProduct(pro_id);
+	}
+
 }

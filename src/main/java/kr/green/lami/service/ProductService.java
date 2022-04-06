@@ -13,4 +13,6 @@ public interface ProductService {
 
 	ArrayList<ImageVO> getImageList(Integer pro_id);
 
+	ProductVO getProduct(Integer pro_id);
+
 }
