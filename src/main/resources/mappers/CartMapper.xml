@@ -9,10 +9,16 @@
 		values(#{ca_me_id}, #{ca_pro_id})
 	</insert>
 	
-	<select id="findAll" parameterType="int" resultType="kr.green.lami.vo.CartVO">
+	<select id="findAll" parameterType="String" resultType="kr.green.lami.vo.CartVO">
 		SELECT ca_id, 
 			ca_me_id, 
 			ca_pro_id 
+		FROM cart 
+		WHERE ca_me_id = #{me_id}
+	</select>
+	
+	<select id = "getProductIdList" parameterType="String" resultType="int">
+		SELECT ca_pro_id 
 		FROM cart 
 		WHERE ca_me_id = #{me_id}
 	</select>

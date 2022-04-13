@@ -13,14 +13,16 @@
  			.album{
 			width : 1200px; margin: 0 auto;
  		}
- 		
+ 		.album::after{
+ 			clear: both; display: block; content:''
+ 		}
  		.thumb-box{
  			width : 25%; padding : 10px; position: relative; box-sizing: border-box; float: left;
  		}
  		.thumb{
  			display: block; height: 200px; border : 1px solid red; 
  		}
- 		.thumb > img {
+ 		.album2 .thumb > img {
  			width : 100%; height : 100%; object-fit: cover;
  		}
  		.thumb-box:hover .popup-wrap{
@@ -48,53 +50,48 @@
  		.carousel-item{
  			height: 100%; text-align: center; vertical-align: middle;
  		}
- 		.carousel-item img{
- 			width : 100%;  height: 100%; object-fit: cover; 
- 		}
+
  		.prev-album .btn-close{
  			position: absolute; top : 55px; right : 55px; z-index: 3;
  		}
  	</style>
 </head>
 	<body>
-	
-		<div id="demo" class="carousel slide" data-ride="carousel">
+		<div id="demo2" class="carousel slide" data-ride="carousel">
+		
 		  <!-- Indicators -->
 		  <ul class="carousel-indicators">
-		    <li data-target="#demo" data-slide-to="0" class="active"></li>
-		    <li data-target="#demo" data-slide-to="1"></li>
-		    <li data-target="#demo" data-slide-to="2"></li>
+		    <li data-target="#demo2" data-slide-to="0" class="active"></li>
+		    <li data-target="#demo2" data-slide-to="1"></li>
+		    <li data-target="#demo2" data-slide-to="2"></li>
 		  </ul>
-		
+		  
 		  <!-- The slideshow -->
 		  <div class="carousel-inner">
 		    <div class="carousel-item active">
-	     	 <video width="100%" height="100%" controls>
-				<source src="<%=request.getContextPath()%>/Lami/Daycare/2022.3/video_high_20220304162243397[Trim].mp4" type="video/mp4">
-			 </video>
+		      <video width="70%" height="50%" controls>
+					<source src="<%=request.getContextPath()%>/img/Lami/funny you/kakaotalk_1625397210834.m" type="video/mp4">
+				</video>
 		    </div>
 		    <div class="carousel-item">
-		      <video width="100%" height="100%" controls>
-				<source src="<%=request.getContextPath()%>/img${image.img_name2}" type="video/mp4">
-			 </video>
+		      <video width="70%" height="50%" controls>
+					<source src="<%=request.getContextPath()%>/img/Lami/funny you/kakaotalk_1625397210834.m" type="video/mp4">
+				</video>
 		    </div>
 		    <div class="carousel-item">
-		      <video width="100%" height="100%" controls>
-				<source src="<%=request.getContextPath()%>/img${image.img_name2}" type="video/mp4">
-			 </video>
+		      <video width="70%" height="50%" controls>
+					<source src="<%=request.getContextPath()%>/img/Lami/funny you/kakaotalk_1625397210834.m" type="video/mp4">
+				</video>
 		    </div>
-		  </div>
-		
+		  
 		  <!-- Left and right controls -->
-		  <a class="carousel-control-prev" href="#demo" data-slide="prev">
+		  <a class="carousel-control-prev" href="#demo2" data-slide="prev">
 		    <span class="carousel-control-prev-icon"></span>
 		  </a>
-		  <a class="carousel-control-next" href="#demo" data-slide="next">
+		  <a class="carousel-control-next" href="#demo2" data-slide="next">
 		    <span class="carousel-control-next-icon"></span>
 		  </a>
 		</div>
-		
-		
 		<div class="album">
 			<div class="rows">
 				<div class="thumb-box">
@@ -129,11 +126,19 @@
 			</div>
 		</div>
 		
-		<div class="album">
+		<div class="album album2">
 			<c:forEach items="${list }" var="pro"  varStatus="vs">
 				<div class="thumb-box">
 					<a href="#" class="thumb">
-						<img src="<%=request.getContextPath()%>/img${pro.pro_main_img}" alt="Lami with Daddy">
+						<c:if test="${!pro.pro_main_img.endsWith('.mp4') }">
+					    	<img src="<%=request.getContextPath()%>/img${pro.pro_main_img}" alt="Lami with Daddy">
+					    </c:if>
+					    <c:if test="${pro.pro_main_img.endsWith('.mp4') }">
+					    	<video width="100%" height="100%" controls>
+		  						<source src="<%=request.getContextPath()%>/img${pro.pro_main_img}" type="video/mp4">
+							</video>
+					    </c:if>
+						
 					</a>
 					<div class="popup-wrap">
 						<a href="#" class="btn-popup" data-target="${pro.pro_id }">앨범보기</a>
@@ -179,7 +184,7 @@
 							for(i = 0; i<res.length; i++){
 								//console.log(res[i]);
 								str += '<div class="carousel-item'+ (i == 1 ? ' active': '')+'">'
-							      +'<img src="<%=request.getContextPath()%>/img'+res[i].img_name2+'" alt="angel" width="100%" height="100%">'
+							      +'<img src="<%=request.getContextPath()%>/img'+res[i].img_name2+'" alt="angel" height="100%">'
 							    +'</div>'
 							    str2+='<li data-target="#demo" data-slide-to="'+i+'" class="'+ (i == 0 ? 'active': '')+'"></li>'
 							}

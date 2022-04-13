@@ -168,11 +168,12 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value= "/product", method=RequestMethod.GET)
-	public ModelAndView productGet(ModelAndView mv, Integer pro_id){
-	    ArrayList<ImageVO> list = productService.getImageList(pro_id);
-	    ProductVO product = productService.getProduct(pro_id);
-	    CategoryVO category = adminService.getCategory(product.getPro_cat_id());
-	    
+	public ModelAndView productGet(ModelAndView mv, Integer pro_cat_id){
+		ProductVO product = productService.getProductByCategory(pro_cat_id);
+	    ArrayList<ImageVO> list = productService.getImageList(product.getPro_id());
+	    //ProductVO product = productService.getProduct(pro_id);
+	    CategoryVO category = adminService.getCategory(pro_cat_id);
+
 	    mv.addObject("list",list);
 	    mv.addObject("product",product);
 	    mv.addObject("category",category);

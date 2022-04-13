@@ -23,7 +23,7 @@
 	</select>
 	
 	<select id="selectMainImage" resultType="kr.green.lami.vo.ProductVO">
-		select * from product limit 50,20;
+		select * from product limit 1,20;
 	</select>
 	
 	<select id="productImages" resultType="kr.green.lami.vo.ImageVO">
@@ -37,6 +37,13 @@
 		select pro_id, pro_name, pro_details, pro_status, pro_cat_id, pro_main_img 
 		from product 
 		where pro_id = #{pro_id}
+	</select>
+	
+	
+	<select id="getProductByCategory"  resultType="kr.green.lami.vo.ProductVO">
+		SELECT pro_id, pro_name, pro_details, pro_status, pro_cat_id, pro_main_img 
+		FROM PRODUCT 
+		where pro_cat_id = #{pro_cat_id}
 	</select>
 	
 </mapper>

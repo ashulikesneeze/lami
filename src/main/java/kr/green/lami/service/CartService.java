@@ -1,13 +1,14 @@
 package kr.green.lami.service;
 
 import java.util.List;
-
-import kr.green.lami.vo.CartDTO;
 import kr.green.lami.vo.CartVO;
 import kr.green.lami.vo.ProductVO;
 
 public interface CartService {
-	int save(ProductVO productVO);
+	List<CartVO> findAll(String me_id);
 
-	List<CartVO> findAll(int me_id);
+	int save(Integer pro_id, String me_id);
+
+	List<Integer> getProductIdList(String me_id);
+
 }

@@ -91,7 +91,6 @@ public class AdminServiceImp implements AdminService {
 
 	@Override
 	public CategoryVO getCategory(int pro_cat_id) {
-		// TODO Auto-generated method stub
 		return adminDao.getCategory(pro_cat_id);
 	}
 

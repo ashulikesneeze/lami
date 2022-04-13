@@ -62,8 +62,13 @@ public class ProductServiceImp implements ProductService {
 
 	@Override
 	public ProductVO getProduct(Integer pro_id) {
-		// TODO Auto-generated method stub
 		return productDao.getProduct(pro_id);
+	}
+
+	@Override
+	public ProductVO getProductByCategory(Integer pro_cat_id) {
+		// TODO Auto-generated method stub
+		return productDao.getProductByCategory(pro_cat_id);
 	}
 
 }

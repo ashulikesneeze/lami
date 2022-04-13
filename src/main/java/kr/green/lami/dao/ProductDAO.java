@@ -24,5 +24,7 @@ public interface ProductDAO {
 	ArrayList<ImageVO> productImages(@Param("pro_id")Integer pro_id);
 
 	ProductVO getProduct(@Param("pro_id")Integer pro_id);
+	
+	ProductVO getProductByCategory(@Param("pro_cat_id")Integer pro_cat_id);
 
 }

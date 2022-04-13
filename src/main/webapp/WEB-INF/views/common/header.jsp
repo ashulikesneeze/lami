@@ -136,6 +136,7 @@
 		<c:if test="${user != null }">
 			<a class="menu-link" href="<%=request.getContextPath()%>/logout">로그아웃(logout)</a>
 			<a class="menu-link" href="<%=request.getContextPath()%>/mypage">마이페이지(mypage)</a>
+			<a class="menu-link" href="<%=request.getContextPath()%>/cartList">장바구니</a>
 		</c:if>
 		<li class="nav-item">
 	        	<a class="menu-link" href="<%=request.getContextPath()%>/board/list">게시글(Q&A)</a>
@@ -210,7 +211,7 @@ function loadCategory(id, depth){
 		success : function(res){
 			var list = res.list; 
 			if(list.length == 0)
-				location.href = '<%=request.getContextPath()%>?cat_id=' + id;
+				location.href = '<%=request.getContextPath()%>/product?pro_cat_id=' + id;
 			for(category of list){
 				str += '<li class="list-item" data-target="'+category.cat_id+'"data-depth="'+ (category.cat_depth+1) +'"><a href="javascript:;">'+category.cat_name+'</a></li>'
 			}

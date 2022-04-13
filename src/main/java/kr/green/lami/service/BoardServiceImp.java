@@ -64,7 +64,7 @@ public class BoardServiceImp implements BoardService {
 				try {
 					String path = 
 						UploadFileUtils.uploadFile(
-							uploadPath, 
+							uploadPath, "",
 							tmpFile.getOriginalFilename(), 
 							tmpFile.getBytes());
 					FileVO file 

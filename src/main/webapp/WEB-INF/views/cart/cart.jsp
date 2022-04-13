@@ -49,20 +49,8 @@
  	</style>
 </head>
 	<body>
-		<div class="form-group">
-		  <label>Categories</label>
-		  <input type="text" class="form-control" value="${product.pro_name}" readonly>
-		</div>
-		<div class="form-group">
-		  <label>Album Name</label>
-		  <input type="text" class="form-control" value="${category.cat_name}" readonly>
-		</div>
-		<div class="form-group">
-		  <label>Details</label>
-		  <input type="text" class="form-control" style="height: auto; min-height: 100px"
-		  value="${product.pro_details}" readonly>
-		</div>
-	
+		<h1>CART</h1>
+		
 		<div class="album">
 			<c:forEach items="${list }" var="image">
 			  <div class="thumb-box">

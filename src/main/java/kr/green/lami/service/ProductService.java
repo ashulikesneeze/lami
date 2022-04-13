@@ -15,4 +15,6 @@ public interface ProductService {
 
 	ProductVO getProduct(Integer pro_id);
 
+	ProductVO getProductByCategory(Integer pro_cat_id);
+
 }
