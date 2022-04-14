@@ -23,7 +23,7 @@
 	</select>
 	
 	<select id="selectMainImage" resultType="kr.green.lami.vo.ProductVO">
-		select * from product limit 1,20;
+		select * from product limit 50,20;
 	</select>
 	
 	<select id="productImages" resultType="kr.green.lami.vo.ImageVO">

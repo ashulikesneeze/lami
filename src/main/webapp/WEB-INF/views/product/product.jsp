@@ -77,7 +77,7 @@
 			    </c:if>
 			  	</a>
 			  	<div class="popup-wrap">
-					<button id="cartButton" data-target="${image.img_pro_id}">장바구니담기</button>
+					<button class="cartButton" data-target="${image.img_id}">장바구니담기</button>
 					<!--<a href="#" class="btn-popup" data-target="${pro.pro_id}">앨범보기</a>  -->
 				</div>
 			  </div>
@@ -117,16 +117,18 @@
 			//productService.setCategoryPath(categoryPath);
 			$(function(){
 				console.log("# start");
-				$(document).on('click', '#cartButton', function() {
+				//cartButton을 가져와서 data만 전송하게 ajax로 
+				//target을 img_pro_id, var pro_id 변수선언
+				$(document).on('click', '.cartButton', function() {
 					console.log('cartButton');
-					var pro_id = $(this).data("target");
-					var data = {'pro_id' : pro_id};
+					var img_id = $(this).data("target");
+					var data = {'img_id' : img_id};
 					console.log(data);
 					$.ajax({
 						async:false,
 						type:'get',
-						url: '<%=request.getContextPath()%>/cart?pro_id=' + pro_id,
-						data : pro_id,
+						url: '<%=request.getContextPath()%>/cart?img_id=' + img_id,
+						data : img_id,
 						contentType:'application/json; charset=UTF-8',
 						dataType:"json",
 						success : function(res){

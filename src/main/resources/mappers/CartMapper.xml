@@ -3,19 +3,18 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.green.lami.dao.CartDAO">
-
-	<insert id="save" parameterType="kr.green.lami.vo.CartVO">
-		insert into cart(ca_me_id, ca_pro_id)
-		values(#{ca_me_id}, #{ca_pro_id})
-	</insert>
 	
 	<select id="findAll" parameterType="String" resultType="kr.green.lami.vo.CartVO">
-		SELECT ca_id, 
-			ca_me_id, 
-			ca_pro_id 
-		FROM cart 
-		WHERE ca_me_id = #{me_id}
+		SELECT ca_id, ca_me_id, ca_pro_id 
+		FROM cart WHERE ca_me_id = #{me_id}
 	</select>
+	
+	
+	<insert id="save" parameterType="kr.green.lami.vo.CartVO">
+		insert into cart(ca_me_id, ca_img_id)
+		values(#{ca_me_id}, #{ca_img_id})
+	</insert>
+	
 	
 	<select id = "getProductIdList" parameterType="String" resultType="int">
 		SELECT ca_pro_id 
@@ -23,4 +22,12 @@
 		WHERE ca_me_id = #{me_id}
 	</select>
 	
+	<select id = "selectCartImageList" parameterType="String" resultType="kr.green.lami.vo.ImageVO">
+	select image.*,concat(cat_path, '/',  img_name) as img_name2 from product 
+			join image on pro_id = img_pro_id 
+			join category on pro_cat_id = cat_id
+			join cart on ca_img_id = img_id
+			where ca_me_id = #{me_id};
+		
+	</select>
 </mapper>

@@ -169,6 +169,7 @@ public class HomeController {
 	
 	@RequestMapping(value= "/product", method=RequestMethod.GET)
 	public ModelAndView productGet(ModelAndView mv, Integer pro_cat_id){
+		//url product?pro_id = 를 product?pro_cat_id= 로 전환하기위해 
 		ProductVO product = productService.getProductByCategory(pro_cat_id);
 	    ArrayList<ImageVO> list = productService.getImageList(product.getPro_id());
 	    //ProductVO product = productService.getProduct(pro_id);
