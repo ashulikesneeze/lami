@@ -29,7 +29,7 @@ public class CartServiceImp implements CartService {
 		//ca_me_id와 ca_pro_id DB에 넘기면 ca_id를 자동생성하여 DB에 저장 
 		CartVO cart = new CartVO();
 		cart.setCa_me_id(me_id); 
-		cart.setCa_pro_id(img_id);
+		cart.setCa_img_id(img_id);
 		return cartDao.save(cart);
 	}
 
@@ -42,7 +42,6 @@ public class CartServiceImp implements CartService {
 
 	@Override
 	public List<ImageVO> selectCartImageList(String me_id) {
-		// TODO Auto-generated method stub
 		return cartDao.selectCartImageList(me_id);
 	}
 	

@@ -54,44 +54,10 @@
  		.prev-album .btn-close{
  			position: absolute; top : 55px; right : 55px; z-index: 3;
  		}
+ 		
  	</style>
 </head>
 	<body>
-		<div id="demo2" class="carousel slide" data-ride="carousel">
-		
-		  <!-- Indicators -->
-		  <ul class="carousel-indicators">
-		    <li data-target="#demo2" data-slide-to="0" class="active"></li>
-		    <li data-target="#demo2" data-slide-to="1"></li>
-		    <li data-target="#demo2" data-slide-to="2"></li>
-		  </ul>
-		  
-		  <!-- The slideshow -->
-		  <div class="carousel-inner">
-		    <div class="carousel-item active">
-		      <video width="70%" height="50%" controls>
-					<source src="<%=request.getContextPath()%>/img/Lami/funny you/kakaotalk_1625397210834.m" type="video/mp4">
-				</video>
-		    </div>
-		    <div class="carousel-item">
-		      <video width="70%" height="50%" controls>
-					<source src="<%=request.getContextPath()%>/img/Lami/funny you/kakaotalk_1625397210834.m" type="video/mp4">
-				</video>
-		    </div>
-		    <div class="carousel-item">
-		      <video width="70%" height="50%" controls>
-					<source src="<%=request.getContextPath()%>/img/Lami/funny you/kakaotalk_1625397210834.m" type="video/mp4">
-				</video>
-		    </div>
-		  
-		  <!-- Left and right controls -->
-		  <a class="carousel-control-prev" href="#demo2" data-slide="prev">
-		    <span class="carousel-control-prev-icon"></span>
-		  </a>
-		  <a class="carousel-control-next" href="#demo2" data-slide="next">
-		    <span class="carousel-control-next-icon"></span>
-		  </a>
-		</div>
 		<div class="album">
 			<div class="rows">
 				<div class="thumb-box">

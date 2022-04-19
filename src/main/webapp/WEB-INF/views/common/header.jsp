@@ -25,7 +25,7 @@
 	}
 	.category-box{
 		background: #fff; width: 1200px; margin: 0 auto; position: relative;
-		display: none;
+		display: none; z-index: 1000;
 	}
 	.main-category{
 		width: 224px; padding: 0; margin: 0;
